@@ -31,13 +31,13 @@
                 lower_layer {
 // -----------------------------------------------------------------------------------------
 // | ESC  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |  DEL |
-// | SHFT |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |     |      |
+// | SHFT |     |     |     |     |BTCLR|   | LFT | DWN |  UP | RGT |     |      |
+// | CTRL | BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |     | SHFT |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp ESC    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp DEL
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans   &trans   &trans &trans    &trans &trans
+   &kp ESC    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6       &kp N7     &kp N8   &kp N9      &kp N0   &kp DEL
+   &kp LSHFT  &trans       &trans       &trans       &trans       &bt BT_CLR     &kp LEFT     &kp DOWN   &kp UP   &kp RIGHT   &trans   &trans
+   &kp LCTRL  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans       &trans     &trans   &trans      &trans   &kp RSHFT  
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };
@@ -45,13 +45,13 @@
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 // |  `~  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  -_ |  =+ |  DEl |
-// | SHFT |BLTOG|RGBTG|     |     |     |   |     |     |     |  (  |  )  |  \"|"|
-// | CTRL | PRV | PP  | NXT |     |     |   |     |     |     | [{  |  ]} |  ~   |
+// | SHFT |BLTOG|RGBTG|     |     |     |   |     |     |  (  |  )  |     |  \"|"|
+// | CTRL | PRV | PP  | NXT |     |     |   |     |     | [{  |  ]} |  \| | SHFT |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp  GRAVE  &kp EXCL   &kp AT            &kp HASH   &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp MINUS &kp EQUAL &kp DEL
-   &kp LSHFT   &bl BL_TOG &rgb_ug RGB_TOG   &trans     &trans   &trans      &trans    &trans    &kp LBKT        &kp LPAR  &kp RPAR  &kp NUBS 
-   &kp LCTRL   &kp C_PREV &kp K_PP          &kp C_NEXT &trans   &trans      &trans    &trans    &kp LBRC        &kp RBKT  &kp BSLH  &kp TILDE
+   &kp GRAVE   &kp EXCL   &kp AT            &kp HASH   &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp MINUS &kp EQUAL &kp DEL
+   &kp LSHFT   &bl BL_TOG &rgb_ug RGB_TOG   &trans     &trans   &trans      &trans    &trans    &kp LPAR        &kp RPAR  &trans    &kp NUBS 
+   &kp LCTRL   &kp C_PREV &kp K_PP          &kp C_NEXT &trans   &trans      &trans    &trans    &kp LBRC        &kp RBKT  &kp BSLH  &kp RSHFT 
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
