@@ -7,8 +7,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <../boards/shields/corne/boards/nice_nano.overlay>
 #include <dt-bindings/zmk/rgb.h>
+#include <../boards/shields/corne/boards/nice_nano.overlay>
 
 
 &spi1 {
@@ -103,7 +103,7 @@
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
    &kp GRAVE   &kp EXCL   &kp AT            &kp HASH   &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp MINUS &kp EQUAL &kp DEL
-   &kp LSHFT   &bl BL_TOG &rgb_ug RGB_TOG   &trans     &trans   &trans      &trans    &trans    &kp LPAR        &kp RPAR  &trans    &kp NUBS 
+   &kp LSHFT   &trans &trans  &trans     &trans   &trans      &trans    &trans    &kp LPAR        &kp RPAR  &trans    &kp NUBS 
    &kp LCTRL   &kp C_PREV &kp K_PP          &kp C_NEXT &trans   &trans      &trans    &trans    &kp LBRC        &kp RBKT  &kp BSLH  &kp RSHFT 
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
