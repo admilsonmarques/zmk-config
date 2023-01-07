@@ -178,7 +178,7 @@
             layers = <0 3 1 2>;
         };
     };
-
+};
 
 / {
         keymap {
@@ -224,7 +224,7 @@
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
-  Config {
+Config {
             bindings = <
           &trans            &none            &none            &none            &none       &kp LC(LEFT)       &kp RC(RIGHT)   &none  &kp F12           &kp C_VOL_DN  &kp C_VOL_UP  &trans
  &rgb_ug RGB_EFF  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &rgb_ug RGB_SPI  &rgb_ug RGB_SPD  &td_brackets_open  &td_brackets_close   &none    &none                  &none         &none   &none
