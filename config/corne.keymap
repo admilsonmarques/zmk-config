@@ -41,16 +41,16 @@
                         >;
 };
 
-                raise_layer {
+                symbols_and_media_layer {
 // -----------------------------------------------------------------------------------------
 // |  `~  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  -_ |  =+ |  DEl |
-// | SHFT |BLTOG|RGBTG|     |     |     |   |     |     |  (  |  )  |     |  \"|"|
-// | CTRL | PRV | PP  | NXT |     |     |   |     |     | [{  |  ]} |  \| | SHFT |
+// | SHFT | PRV | PP  | NXT |     |     |   |     |     |  (  |  )  |     |  \"|"|
+// | CTRL |     |     |     |     |     |   |     |     | [{  |  ]} |  \| | SHFT |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp GRAVE   &kp EXCL   &kp AT            &kp HASH   &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp MINUS &kp EQUAL &kp DEL
-   &kp LSHFT   &bl BL_TOG &rgb_ug RGB_TOG   &trans     &trans   &trans      &trans    &trans    &kp LPAR        &kp RPAR  &trans    &kp NUBS 
-   &kp LCTRL   &kp C_PREV &kp K_PP          &kp C_NEXT &trans   &trans      &trans    &trans    &kp LBRC        &kp RBKT  &kp BSLH  &kp RSHFT 
+   &kp GRAVE &kp EXCL   &kp AT   &kp HASH   &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp MINUS &kp EQUAL &kp DEL
+   &kp LSHFT &kp C_PREV &kp K_PP &kp C_NEXT &trans   &trans      &trans    &trans    &kp LPAR        &kp RPAR  &trans    &kp NUBS 
+   &kp LCTRL &trans     &trans   &trans     &trans   &trans      &trans    &trans    &kp LBRC        &kp RBKT  &kp BSLH  &kp RSHFT 
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
