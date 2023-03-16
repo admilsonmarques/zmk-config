@@ -1,5 +1,5 @@
 #include "corne_led.dtsi"
-#include "general_config"".dtsi"
+#include "general_config.dtsi"
 
 
 / {
