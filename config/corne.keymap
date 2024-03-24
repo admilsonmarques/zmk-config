@@ -88,12 +88,12 @@ behaviors {
 
     Nav_layer {
       bindings = <
-       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none
-       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none
+       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
        &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none 
-       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none
+       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none 
+       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
        &none  &none &none &none &none &none 
-       &none  &none &none &none &none &kp PSCRN
+       &none  &none &none &none &none &kp PSCRN 
        &none &none &none 
        &none &none &none 
       >;
@@ -102,24 +102,24 @@ behaviors {
     Functions_layer {
       bindings = <
       >;
-       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
-       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
-       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
-       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
+       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 
+       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 
+       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
        &none  &none &none &none &kp DEL &kp PRINTSCREEN 
-       &kp PRINTSCREEN  &kp DEL &none &none &none &none
+       &kp PRINTSCREEN  &kp DEL &none &none &none &none 
        &none &none &none 
        &none &none &none 
     };
 
     System_layer {
       bindings = <
-       &none  &out OUT_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none
-       &bt BT_CLR  &none  &none  &none &none  &none
-       &none  &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_EFF
-       &rgb_ug RGB_TOG  &none &none  &none &none  &none
-       &none  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_EFR
-       &none  &none &none &none &none &none
+       &none  &out OUT_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none 
+       &bt BT_CLR  &none  &none  &none &none  &none 
+       &none  &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_EFF 
+       &rgb_ug RGB_TOG  &none &none  &none &none  &none 
+       &none  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_EFR 
+       &none  &none &none &none &none &none 
        &none &none &none 
        &none &none &none 
       >;
