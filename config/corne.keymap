@@ -19,18 +19,8 @@
 };
 
 / {
-#   combos {
-#     compatible = "zmk,combos";
-#     
-#     combo_RL {
-#       timeout-ms = <50>;
-#       key-positions = <37 40>;
-#       layers = <NUMBERS BASE SYMBOLS MEDIA NAV SYSTEM FUNCTIONS>;
-#       bindings = <&mo C_GREEN_BUTTON>; 
-#     };
-#   };
 
-  behaviors {
+behaviors {
     hm: homerow_mods {
       compatible = "zmk,behavior-hold-tap";
       label = "HOMEROW_MODS";
