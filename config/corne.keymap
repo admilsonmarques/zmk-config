@@ -89,8 +89,8 @@ behaviors {
     Nav_layer {
       bindings = <
        &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
-       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none 
-       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none 
+       &none  &kp HOME &kp PG_DOWN &kp PG_UP &none &none 
+       &none  &kp HOME &kp PG_DOWN &kp PG_UP &none &none 
        &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
        &none  &none &none &none &none &none 
        &none  &none &none &none &none &kp PSCRN 
