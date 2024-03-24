@@ -18,7 +18,7 @@
     chain-length = <27>;
 };
 
-# / {
+/ {
 #   combos {
 #     compatible = "zmk,combos";
 #     
