@@ -1,0 +1,166 @@
+ #include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/led/led.h>
+#include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/reset.h>
+
+#define BASE 0
+#define NUMBERS 1
+#define SYMBOLS 2
+#define MEDIA 3
+#define NAV 4
+#define SYSTEM 5
+#define FUNCTIONS 6
+&led_strip {
+    chain-length = <27>;
+};
+
+# / {
+#   combos {
+#     compatible = "zmk,combos";
+#     
+#     combo_RL {
+#       timeout-ms = <50>;
+#       key-positions = <37 40>;
+#       layers = <NUMBERS BASE SYMBOLS MEDIA NAV SYSTEM FUNCTIONS>;
+#       bindings = <&mo C_GREEN_BUTTON>; 
+#     };
+#   };
+
+  behaviors {
+    hm: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS";
+      #binding-cells = <2>;
+      tapping-term-ms = <250>;
+      quick_tap_ms = <0>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&kp>;
+    };
+  };
+  keymap {
+    compatible = "zmk,keymap";
+
+    Base_layer {
+      bindings = <
+       # ROW 1
+       &kp GRAVE &kp Q &kp W &kp E &kp R &kp T 
+       &kp Y &kp U &kp I &kp O &kp P &kp BACKSPACE 
+       # ROW 2       
+       &kp LEFT_SHIFT &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F &kp G 
+       &kp H &hm RSHFT J &hm RCTRL K &hm RALT L &hm RGUI SEMICOLON &kp SINGLE_QUOTE 
+       # ROW 3
+       &kp LEFT_CONTROL &kp Z &kp X &kp C &kp V &kp B 
+       &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH &kp ESCAPE 
+       # Thumb Row
+       &lt MEDIA TAB &lt NUMBERS SPACE &lt NAV BACKSPACE 
+       &lt FUNCTIONS DEL &lt SYMBOLS RETURN &lt SYSTEM ESCAPE
+      >;
+    };
+
+    Numbers_layer {
+      bindings = <
+       # ROW 1
+       &kp GRAVE &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 
+       &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp BACKSPACE 
+       # ROW 2       
+       &kp LEFT_SHIFT &hm LGUI NUMBER_6 &hm LALT NUMBER_7 &hm LCTRL NUMBER_8 &hm LSHFT NUMBER_9 &kp NUMBER_0 
+       &kp LEFT &hm RSHFT DOWN &hm RCTRL UP &hm RALT RIGHT &hm RGUI SEMICOLON &kp SINGLE_QUOTE 
+       # ROW 3
+       &kp SPACE &none &none &none &none &none 
+       &none &none &kp COMMA &kp PERIOD &kp SLASH &kp SPACE 
+       # Thumb Row
+       &kp TAB &none &kp BACKSPACE 
+       &kp DEL &kp RETURN &kp ESCAPE
+      >;
+    };
+
+    Symbols_layer {
+      bindings = <
+       # ROW 1
+       &kp GRAVE &kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT
+       &kp CARET &kp AMPS &kp ASTERISK &kp MINUS &kp EQUAL &kp BACKSPACE 
+       # ROW 2       
+       &kp LEFT_SHIFT &hm LGUI CARET &hm LALT AMPS &hm LCTRL ASTERISK &hm LSHFT MINUS &kp EQUAL 
+       &kp MINUS &hm RSHFT EQUAL &hm RCTRL LPAR &hm RALT RPAR &hm RGUI BACKSLASH &kp SINGLE_QUOTE 
+       # ROW 3
+       &none &none &none &none &kp UNDERSCORE &kp PLUS 
+       &kp UNDERSCORE &kp PLUS &kp LBKT &kp RBKT &kp SLASH &none 
+       # Thumb Row
+       &kp TAB &kp SPACE &kp BACKSPACE 
+       &kp DEL &none &kp ESCAPE
+      >;
+    };
+
+    Media_layer {
+      bindings = <
+       # ROW 1
+       &none  &none &kp C_VOL_DOWN &kp C_MUTE &kp C_VOL_UP &none 
+       &none  &none &kp C_PREV &kp C_PP &kp C_NEXT &none
+       # ROW 2       
+       &none  &none &kp C_PREV &kp C_PP &kp C_NEXT &none 
+       &none  &none &kp C_VOL_DOWN &kp C_MUTE  &kp C_VOL_UP &none
+       # ROW 3
+       &none  &none &none &none &none &none 
+       &none  &none &none &none &none &none
+       # Thumb Row
+       &none &none &none 
+       &none &none &none 
+      >;
+    };
+
+    Nav_layer {
+      bindings = <
+       # ROW 1
+       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none
+       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none
+       # ROW 2       
+       &none  &kp HOME &kp PG_DOWN &kp PG_UP &kp END &none 
+       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none
+       # ROW 3
+       &none  &none &none &none &none &none 
+       &none  &none &none &none &none &kp PSCRN
+       # Thumb Row
+       &none &none &none 
+       &none &none &none 
+      >;
+    };
+
+    Functions_layer {
+      bindings = <
+      >;
+       # ROW 1
+       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
+       # ROW 2       
+       &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
+       &none  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+       # ROW 3
+       &none  &none &none &none &kp DEL &kp PRINTSCREEN 
+       &kp PRINTSCREEN  &kp DEL &none &none &none &none
+       # Thumb Row
+       &none &none &none 
+       &none &none &none 
+    };
+
+    System_layer {
+      bindings = <
+       # ROW 1
+       &none  &out OUT_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none
+       &bt BT_CLR  &none  &none  &none &none  &none
+       # ROW 2       
+       &none  &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_EFF
+       &rgb_ug RGB_TOG  &none &none  &none &none  &none
+       # ROW 3
+       &none  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_EFR
+       &none  &none &none &none &none &none
+       # Thumb Row
+       &none &none &none 
+       &none &none &none 
+      >;
+    };
+  };
+};
