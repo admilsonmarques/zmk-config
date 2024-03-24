@@ -15,7 +15,7 @@
 #define SYSTEM 5
 #define FUNCTIONS 6
 &led_strip {
-    chain-length = <27>;
+    chain-length = <29>;
 };
 
 / {
