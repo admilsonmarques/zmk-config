@@ -66,7 +66,7 @@ behaviors {
        &kp CARET &kp AMPS &kp ASTERISK &kp MINUS &kp EQUAL &kp BACKSPACE 
        &kp LEFT_SHIFT &hm LGUI CARET &hm LALT AMPS &hm LCTRL ASTERISK &hm LSHFT MINUS &kp EQUAL 
        &kp MINUS &hm RSHFT EQUAL &hm RCTRL LPAR &hm RALT RPAR &hm RGUI BACKSLASH &none 
-       &none &GRAVE &none &none &kp UNDERSCORE &kp PLUS 
+       &none &kp GRAVE &none &none &kp UNDERSCORE &kp PLUS 
        &kp UNDERSCORE &kp PLUS &kp LBKT &kp RBKT &kp SLASH &none 
        &kp TAB &kp SPACE &kp BACKSPACE 
        &kp DEL &none &kp ESCAPE
@@ -75,10 +75,10 @@ behaviors {
 
     Media_layer {
       bindings = <
-       &none  &none &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &none 
-       &none &kp C_PREV &kp C_PP &kp C_NEXT &none
-       &none &none   &kp C_PREV &kp C_PP &kp C_NEXT &none &none
-       &none   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &none &none
+       &none &none &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &none 
+       &none &kp C_PREV &kp C_PP &kp C_NEXT &none &none
+       &none &none &kp C_PREV &kp C_PP &kp C_NEXT &none 
+       &none &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &none &none
        &none  &none &none &none &none &none 
        &none  &none &none &none &none &none
        &none &none &none 
@@ -88,12 +88,12 @@ behaviors {
 
     Nav_layer {
       bindings = <
-       &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
+       &kp PSCRN  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
        &none  &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END &none 
        &none  &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END &none 
        &none  &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
        &none  &none &none &none &none &none 
-       &none  &none &none &none &none &kp PSCRN 
+       &none  &none &none &none &none &none 
        &none &none &none 
        &none &none &none 
       >;
