@@ -42,7 +42,7 @@ behaviors {
        &none &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F &kp G 
        &kp H &hm RSHFT J &hm RCTRL K &hm RALT L &hm RGUI SEMICOLON &none
        &none &kp Z &kp X &kp C &kp V &kp B 
-       &kp h &kp M &kp COMMA &kp PERIOD &kp SLASH &none
+       &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH &none
        &lt MEDIA BACKSPACE &lt NUMBERS TAB &lt NAV SPACE
        &lt FUNCTIONS RETURN &lt SYMBOLS ESCAPE &lt SYSTEM DEL
       >;
