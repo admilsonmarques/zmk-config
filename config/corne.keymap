@@ -18,6 +18,10 @@
     chain-length = <29>;
 };
 
+&soft_off {
+    hold-time-ms = <5000>;
+};
+
 / {
 
 behaviors {
@@ -80,7 +84,7 @@ behaviors {
        &none &kp C_PREV &kp C_PP &kp C_NEXT &none &none
        &none &none &kp C_PREV &kp C_PP &kp C_NEXT &none 
        &none &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &none &none
-       &none  &none &none &none &none &none 
+       &none  &soft_off &none &none &bt BT_NXT &out OUT_TOG 
        &none  &none &none &none &none &none
        &none &none &none 
        &none &none &none 
@@ -106,7 +110,7 @@ behaviors {
        &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &none  
        &none  &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 
        &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &none  
-       &none  &none &none &none &kp DEL &kp PRINTSCREEN 
+       &out out_tog  &none &none &none &kp DEL &kp PRINTSCREEN 
        &none &none &none &none &none &none 
        &none &none &none 
        &none &none &none 
@@ -115,7 +119,7 @@ behaviors {
 
     System_layer {
       bindings = <
-       &none  &out OUT_TOG &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none 
+       &none  &out out_tog &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none 
        &bt BT_CLR  &none  &none  &none &none  &none 
        &none  &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_EFF 
        &rgb_ug RGB_TOG  &none &none  &none &none  &none 
