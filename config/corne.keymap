@@ -22,12 +22,13 @@
     hold-time-ms = <5000>;
 };
 
-/ {
 
 &lt {
      tapping-term-ms = <100>;
       quick_tap_ms = <200>;
-  }
+};
+
+/ {
 behaviors {
     hm: homerow_mods {
       compatible = "zmk,behavior-hold-tap";
