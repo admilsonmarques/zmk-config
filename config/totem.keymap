@@ -12,13 +12,12 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-
-#define Base        0
-#define Number      1
-#define Symbols     2
-#define Media       3
-#define Navigation  4
-#define Functions   5
+#define BASE        0
+#define NUMBERS     1
+#define SYMBOLS     2
+#define MEDIA       3
+#define NAV         4
+#define FUNCTIONS   5
 
 &mt {
     quick-tap-ms = <100>;
@@ -28,9 +27,8 @@
 };
 
 &lt {
-    tapping-term-ms = <240>;
-    flavor = "balanced";
-    quick-tap-ms = <150>;
+     tapping-term-ms = <200>;
+     quick_tap_ms = <200>;
 };
 
 / {
