@@ -32,24 +32,22 @@
 };
 
 / {
-    behaviors {
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        };
+behaviors {
+    hm: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick_tap_ms = <200>;
+      require-prior-idle-ms = <125>;
+      flavor = "tap-preferred";
+      bindings = <&kp>, <&kp>;
     };
-
-    keymap {
+  }; 
+  keymap {
         compatible = "zmk,keymap";
 
         Base {
-            label = "Base";
             bindings = <
               &kp Q       &kp W       &kp E          &kp R         &kp T        &kp Y        &kp U          &kp I          &kp O          &kp P
               &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHFT F   &kp G        &kp H        &hm RSHFT J    &hm RCTRL K    &hm RALT L     &hm RGUI SEMICOLON 
@@ -59,7 +57,6 @@
         };
 
         Numbers {
-            label = "Numbers";
             bindings = <
               &kp NUMBER_1       &kp NUMBER_2      &kp NUMBER_3       &kp NUMBER_4       &kp NUMBER_5 &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9 &kp NUMBER_0 
               &hm LGUI NUMBER_6  &hm LALT NUMBER_7 &hm LCTRL NUMBER_8 &hm LSHFT NUMBER_9 &kp NUMBER_0 &kp SEMICOLON &hm RSHFT LEFT &hm RCTRL DOWN &hm RALT UP  &hm RGUI RIGHT
@@ -69,7 +66,6 @@
         };
 
         Symbols {
-            label = "Symbols";
             bindings = <
         &kp EXCLAMATION  &kp AT          &kp HASH      &kp DOLLAR     &kp PERCENT  &kp CARET      &kp AMPS         &kp ASTERISK    &kp MINUS      &kp EQUAL
         &hm LGUI TILDE   &hm LALT GRAVE  &hm LCTRL SQT &hm LSHFT DQT  &none        &kp MINUS      &hm RSHFT EQUAL  &hm RCTRL LPAR  &hm RALT RPAR  &hm RGUI BACKSLASH
@@ -79,7 +75,6 @@
         };
 
         Media {
-            label = "Media";
             bindings = <
         &none     &kp C_VOL_DN  &kp C_MUTE &kp C_VOL_UP &none     &none   &kp C_PREV    &kp C_PP    &kp C_NEXT    &none 
         &none     &kp C_PREV    &kp C_PP   &kp C_NEXT   &none     &none   &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &none
@@ -89,7 +84,6 @@
         };
 
         Navigation {
-            label = "Navigation";
             bindings = <
             &kp LEFT       &kp DOWN            &kp UP            &kp RIGHT     &none  &none  &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP &kp END
             &hm LGUI HOME  &hm LALT PAGE_DOWN  &hm LCTRL PAGE_UP &hm LSHFT END &none  &none  &hm RSHFT LEFT &hm RCTRL DOWN &hm RALT UP &hm RGUI RIGHT
@@ -99,7 +93,6 @@
         };
 
      Functions {
-       label = "Functions";
        bindings = <
        &kp F6 &kp F7 &kp F8 &kp F9  &kp F10          &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
        &kp F1 &kp F2 &kp F3 &kp F4  &kp F5           &kp F6 &kp F7 &kp F8 &kp F9 &kp F10  
