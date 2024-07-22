@@ -19,13 +19,6 @@
 #define NAV         4
 #define FUNCTIONS   5
 
-&mt {
-    quick-tap-ms = <100>;
-    global-quick-tap;
-    flavor = "tap-preferred";
-    tapping-term-ms = <170>;
-};
-
 &lt {
      tapping-term-ms = <200>;
      quick_tap_ms = <200>;
