@@ -124,12 +124,12 @@ behaviors {
 
     System_layer {
       bindings = <
-       &none  &none &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none 
-       &bt BT_CLR  &none  &none  &none &none  &none 
+       &none &out OUT_BLE &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2 &none 
+       &bt BT_CLR  &none  &none &none &out OUT_USB &none 
        &none  &rgb_ug RGB_SPI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_HUI &rgb_ug RGB_EFF 
-       &rgb_ug RGB_TOG  &none &none  &none &none  &none 
+       &rgb_ug RGB_TOG  &none &none  &none &studio_unlock  &none 
        &none  &rgb_ug RGB_SPD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_HUD &rgb_ug RGB_EFR 
-       &none  &none &none &none &none &none 
+       &none  &none &none &none &soft_off &none 
        &none &none &none 
        &none &none &none 
       >;
