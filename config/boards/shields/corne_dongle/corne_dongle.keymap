@@ -24,7 +24,7 @@
 
 // RGB underglow configuration
 &led_strip {
-    chain-length = <29>;
+    chain-length = <27>; // Adjust based on your corne PCB
 };
 
 // Soft off configuration

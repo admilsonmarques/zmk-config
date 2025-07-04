@@ -181,7 +181,7 @@ USB Cable   ──► 🖥️ Desktop (Direct)
 | `GUI/A` | Hold for GUI, Tap for A |
 | `MED/BSP` | Hold for Media Layer, Tap for Backspace |
 | `---` | Layer activation key |
-| `▲/▼` | RGB increase/decrease |
+| `RGB +/-` | RGB increase/decrease |
 | `◄/►` | Navigation arrows |
 
 ## 🔋 Power Management
