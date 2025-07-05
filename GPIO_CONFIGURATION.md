@@ -68,7 +68,7 @@ R3  │    │    │    │BSP │TAB │SPC │ ← ROW 3
 ZMK Reference  →  Physical Pin  →  Function
 ─────────────────────────────────────────────
 &gpio0 22      →  P0.22        →  Row 0
-&gpio1 0       →  P1.00        →  Row 1  
+&gpio1 2       →  P1.02        →  Row 1  
 &gpio1 3       →  P1.03        →  Row 2
 &gpio1 1       →  P1.01        →  Row 3
 
@@ -88,7 +88,7 @@ ZMK Reference  →  Physical Pin  →  Function
 ```
 Row Configuration:
   ROW 0: P0.22 (gpio0 22) ─┐
-  ROW 1: P1.00 (gpio1 0)  ─┤
+  ROW 1: P1.02 (gpio1 2)  ─┤
   ROW 2: P1.03 (gpio1 3)  ─┤ ROWS
   ROW 3: P1.01 (gpio1 1)  ─┘
 
@@ -115,7 +115,7 @@ Column Configuration:
        └─────┴─────┴─────┴─────┴─────┴─────┘
 
 Physical Pins Used:
-Rows: P0.22, P1.00, P1.03, P1.01
+Rows: P0.22, P1.02, P1.03, P1.01
 Cols: P0.31, P0.29, P0.02, P1.15, P1.13, P1.11
 ```
 
@@ -127,7 +127,7 @@ Cols: P0.31, P0.29, P0.02, P1.15, P1.13, P1.11
 ```
 Row Configuration: (SAME as left!)
   ROW 0: P0.22 (gpio0 22) ─┐
-  ROW 1: P1.00 (gpio1 0)  ─┤
+  ROW 1: P1.02 (gpio1 2)  ─┤
   ROW 2: P1.03 (gpio1 3)  ─┤ ROWS
   ROW 3: P1.01 (gpio1 1)  ─┘
 
@@ -154,7 +154,7 @@ Column Configuration: (REVERSED!)
        └─────┴─────┴─────┴─────┴─────┴─────┘
 
 Physical Pins Used:
-Rows: P0.22, P1.00, P1.03, P1.01 (Same as left)
+Rows: P0.22, P1.02, P1.03, P1.01 (Same as left)
 Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 ```
 
@@ -209,7 +209,7 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 | Function | GPIO Ref | Physical Pin | Description |
 |----------|----------|--------------|-------------|
 | Row 0    | gpio0 22 | P0.22        | Top row scan |
-| Row 1    | gpio1 0  | P1.00        | Home row scan |
+| Row 1    | gpio1 2  | P1.02        | Home row scan |
 | Row 2    | gpio1 3  | P1.03        | Bottom row scan |
 | Row 3    | gpio1 1  | P1.01        | Thumb row scan |
 | Col 0    | gpio0 31 | P0.31        | Q, A, Z column |
@@ -222,7 +222,10 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 ### **Right Half (nice_nano_v2)**
 | Function | GPIO Ref | Physical Pin | Description |
 |----------|----------|--------------|-------------|
-| Row 0-3  | Same as left | Same as left | Identical row config |
+| Row 0    | gpio0 22 | P0.22        | Top row scan |
+| Row 1    | gpio1 2  | P1.02        | Home row scan |
+| Row 2    | gpio1 3  | P1.03        | Bottom row scan |
+| Row 3    | gpio1 1  | P1.01        | Thumb row scan |
 | Col 0    | gpio1 11 | P1.11        | -, H, N column |
 | Col 1    | gpio1 13 | P1.13        | Y, J, M column |
 | Col 2    | gpio1 15 | P1.15        | U, K, , column |
