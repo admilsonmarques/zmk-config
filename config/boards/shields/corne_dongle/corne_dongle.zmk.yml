@@ -3,7 +3,7 @@ id: corne_dongle
 name: Corne Dongle
 type: shield
 url: https://github.com/foostan/crkbd
-requires: [nice_nano, xiao_ble]
+requires: [nice_nano//zmk, xiao_ble//zmk]
 features:
   - keys
 siblings:

@@ -1,46 +1,46 @@
 include:
   # Corne
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: corne_left
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: corne_right
 
   # Totem
-  - board: xiao_ble//zmk
+  - board: xiao_ble/nrf52840/zmk
     shield: totem_left
-  - board: xiao_ble//zmk
+  - board: xiao_ble/nrf52840/zmk
     shield: totem_right
-  - board: xiao_ble//zmk
+  - board: xiao_ble/nrf52840/zmk
     shield: totem_dongle
 
   # Corne Dongle Peripherals
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: corne_dongle_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: corne_dongle_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 
   # Sweep Pro (Standard Split)
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: sweep_left
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: sweep_right
 
   # Sweep Pro (Dongle Peripherals)
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: sweep_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: sweep_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 
   # Dongle Central
-  - board: xiao_ble//zmk
+  - board: xiao_ble/nrf52840/zmk
     shield: corne_dongle_dongle
 
   # Reset & Maintenance
-  - board: xiao_ble//zmk
+  - board: xiao_ble/nrf52840/zmk
     shield: settings_reset
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: settings_reset
