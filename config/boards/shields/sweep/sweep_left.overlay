@@ -98,4 +98,15 @@
 	chosen {
 		zephyr,display = &display0;
 	};
+
+	kscan0: kscan0 {
+		col-gpios
+		= <&none> // Col 0 (Outer)
+		, <&gpio1 13 GPIO_PULL_DOWN> // Col 1
+		, <&gpio1 15 GPIO_PULL_DOWN> // Col 2
+		, <&gpio0 2 GPIO_PULL_DOWN>  // Col 3
+		, <&gpio0 29 GPIO_PULL_DOWN> // Col 4
+		, <&gpio0 31 GPIO_PULL_DOWN> // Col 5
+		;
+	};
 };

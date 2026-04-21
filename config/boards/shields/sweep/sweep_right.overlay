@@ -1,9 +1,5 @@
 #include "sweep.dtsi"
 
-&default_transform {
-	col-offset = <5>;
-};
-
 &right_encoder {
 	status = "okay";
 };
@@ -27,7 +23,7 @@
 };
 
 &i2c0 {
-	compatible = "nordic,nrf-twim";// I2C controller instead of generic
+	compatible = "nordic,nrf-twim";
 	status = "okay";
 	
 	pinctrl-0 = <&i2c0_default>;
@@ -51,4 +47,20 @@
 
 &glidepoint_split {
 	device = <&glidepoint>;
+};
+
+&kscan0 {
+	col-gpios
+	= <&none> // Col 6 (Dongle index)
+	, <&none>
+	, <&none>
+	, <&none>
+	, <&none>
+	, <&none>
+	, <&gpio1 13 GPIO_PULL_DOWN> // Col 6 (Corne Right Inner)
+	, <&gpio1 15 GPIO_PULL_DOWN> // Col 7
+	, <&gpio0 2 GPIO_PULL_DOWN>  // Col 8
+	, <&gpio0 29 GPIO_PULL_DOWN> // Col 9
+	, <&gpio0 31 GPIO_PULL_DOWN> // Col 10
+	;
 };

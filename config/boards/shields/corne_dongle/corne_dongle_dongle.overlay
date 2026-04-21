@@ -45,4 +45,9 @@
         chain-length = <0>;
         status = "disabled";
     };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <>;
+    };
 }; 
