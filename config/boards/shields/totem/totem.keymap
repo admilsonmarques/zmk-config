@@ -12,6 +12,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include "behaviors/character_map.dtsi"
 #define BASE        0
 #define NUMBERS     1
 #define SYMBOLS     2
@@ -33,7 +34,8 @@ behaviors {
       tapping-term-ms = <200>;
       quick_tap_ms = <200>;
       require-prior-idle-ms = <125>;
-      flavor = "tap-preferred";
+      flavor = "balanced";
+      global-quick-tap;
       bindings = <&kp>, <&kp>;
     };
   }; 
