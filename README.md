@@ -157,9 +157,9 @@ USB Cable   ──► 🖥️ Desktop (Direct)
 ## 🚀 Getting Started
 
 ### **Flashing Firmware**
-1. **Left Half**: Flash `corne_dongle_left.uf2` to nice_nano_v2
-2. **Right Half**: Flash `corne_dongle_right.uf2` to nice_nano_v2  
-3. **Dongle**: Flash `corne_dongle_dongle.uf2` to seeeduino_xiao_ble
+1. **Left Half**: Flash `corne_dongle_left.uf2` to nice_nano
+2. **Right Half**: Flash `corne_dongle_right.uf2` to nice_nano  
+3. **Dongle**: Flash `corne_dongle_dongle.uf2` to xiao_ble
 
 ### **Initial Setup**
 1. Flash `settings_reset.uf2` to all three devices first

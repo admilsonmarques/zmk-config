@@ -84,7 +84,7 @@ ZMK Reference  →  Physical Pin  →  Function
 
 ## 🎹 Left Half Configuration
 
-### **GPIO Assignment (nice_nano_v2)**
+### **GPIO Assignment (nice_nano)**
 ```
 Row Configuration:
   ROW 0: P0.22 (gpio0 22) ─┐
@@ -123,7 +123,7 @@ Cols: P0.31, P0.29, P0.02, P1.15, P1.13, P1.11
 
 ## 🎹 Right Half Configuration
 
-### **GPIO Assignment (nice_nano_v2)**
+### **GPIO Assignment (nice_nano)**
 ```
 Row Configuration: (SAME as left!)
   ROW 0: P0.22 (gpio0 22) ─┐
@@ -162,7 +162,7 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 
 ## 📡 Dongle Configuration
 
-### **seeeduino_xiao_ble Layout**
+### **xiao_ble Layout**
 ```
       XIAO BLE nRF52840 (Top View)
     ┌─────────────────────────┐
@@ -205,7 +205,7 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 
 ## 🔌 Pin Mapping Summary
 
-### **Left Half (nice_nano_v2)**
+### **Left Half (nice_nano)**
 | Function | GPIO Ref | Physical Pin | Description |
 |----------|----------|--------------|-------------|
 | Row 0    | gpio0 22 | P0.22        | Top row scan |
@@ -219,7 +219,7 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 | Col 4    | gpio1 13 | P1.13        | T, G, B column |
 | Col 5    | gpio1 11 | P1.11        | -, -, - column |
 
-### **Right Half (nice_nano_v2)**
+### **Right Half (nice_nano)**
 | Function | GPIO Ref | Physical Pin | Description |
 |----------|----------|--------------|-------------|
 | Row 0    | gpio0 22 | P0.22        | Top row scan |
@@ -233,7 +233,7 @@ Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
 | Col 4    | gpio0 29 | P0.29        | O, ;, / column |
 | Col 5    | gpio0 31 | P0.31        | P, -, - column |
 
-### **Dongle (seeeduino_xiao_ble)**
+### **Dongle (xiao_ble)**
 | Function | Configuration | Description |
 |----------|---------------|-------------|
 | Scanning | Mock KScan    | No physical pins used |
