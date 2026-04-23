@@ -27,14 +27,6 @@ include:
   - board: nice_nano/nrf52840/zmk
     shield: sweep_right
 
-  # Sweep Pro (Dongle Peripherals)
-  - board: nice_nano/nrf52840/zmk
-    shield: sweep_left
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-  - board: nice_nano/nrf52840/zmk
-    shield: sweep_right
-    cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
-
   # Dongle Central
   - board: xiao_ble/nrf52840/zmk
     shield: corne_dongle_dongle

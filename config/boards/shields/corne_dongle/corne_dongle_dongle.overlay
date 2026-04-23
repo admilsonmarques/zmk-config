@@ -41,7 +41,7 @@
     // The dongle doesn't have physical LEDs, but this prevents build errors
     led_strip: led_strip {
         compatible = "worldsemi,ws2812-gpio";
-        in-gpios = <&gpio0 0 0>; // Dummy GPIO that won't be used
+        gpios = <&gpio0 0 0>; // Dummy GPIO that won't be used
         chain-length = <0>;
         status = "disabled";
     };
