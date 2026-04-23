@@ -12,7 +12,7 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <behaviors/character_map.dtsi>
+#include "../../../behaviors/character_map.dtsi"
 #define BASE        0
 #define NUMBERS     1
 #define SYMBOLS     2
