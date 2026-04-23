@@ -18,7 +18,7 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
    - `settings_reset-nice_nano-zmk.uf2` (for left/right halves)
    - `corne_dongle_left-nice_nano-zmk.uf2`
    - `corne_dongle_right-nice_nano-zmk.uf2`
-   - `corne_dongle_dongle-xiao_ble-zmk.uf2`
+   - `universal_dongle-xiao_ble-zmk.uf2`
 
 ## **Step 2: Complete Reset Procedure**
 
@@ -63,7 +63,7 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
 
 #### C. Flash Dongle
 1. Put dongle in bootloader mode
-2. Flash `corne_dongle_dongle-seeeduino_xiao_ble-zmk.uf2`
+2. Flash `universal_dongle-seeeduino_xiao_ble-zmk.uf2`
 3. **Wait 15 seconds** after flashing completes
 
 ## **Step 4: Pairing Procedure**

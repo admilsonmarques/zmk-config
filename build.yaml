@@ -27,14 +27,14 @@ include:
   - board: nice_nano/nrf52840/zmk
     shield: sweep_right
 
-  # Sweep Pro (Dongle Peripherals — both halves connect to corne_dongle_dongle)
+  # Sweep Pro (Dongle Peripherals — both halves connect to universal_dongle)
   - board: nice_nano/nrf52840/zmk
     shield: sweep_dongle_left
   # sweep_right reused as-is: sweep_right.conf sets ROLE_CENTRAL=n by default
 
-  # Universal Dongle Central (works with Corne and Sweep)
+  # Universal Dongle (central for Corne + Sweep simultaneously, 4 peripherals)
   - board: xiao_ble/nrf52840/zmk
-    shield: corne_dongle_dongle
+    shield: universal_dongle
 
   # Reset & Maintenance
   - board: xiao_ble/nrf52840/zmk
