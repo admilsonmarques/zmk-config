@@ -9,6 +9,11 @@
 	status = "okay";
 };
 
+// Enable input-split receiver and listener when sweep_left is the central
+&glidepoint_split {
+	status = "okay";
+};
+
 &glidepoint_listener {
 	status = "okay";
 };

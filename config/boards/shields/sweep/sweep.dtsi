@@ -145,6 +145,8 @@
 		glidepoint_split: glidepoint_split@0 {
 			compatible = "zmk,input-split";
 			reg = <0>;
+			// Enabled per-side: sweep_right.overlay (sender) and sweep_left.overlay (receiver)
+			status = "disabled";
 		};
 	};
 	glidepoint_listener: glidepoint_listener {
