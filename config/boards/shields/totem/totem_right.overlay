@@ -6,8 +6,9 @@
 
 #include "totem.dtsi"
 
+// Shift right-side physical cols 0-4 to global cols 6-10 (universal_dongle compatible)
 &default_transform {
-    col-offset = <5>;
+    col-offset = <6>;
 };
 
 &kscan0 {

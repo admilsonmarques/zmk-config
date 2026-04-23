@@ -6,6 +6,11 @@
 
  #include "totem.dtsi"
 
+ // Shift left-side physical cols 0-4 to global cols 1-5 (universal_dongle compatible)
+ &default_transform {
+     col-offset = <1>;
+ };
+
  &kscan0 {
      col-gpios
          = <&xiao_d 4 GPIO_ACTIVE_HIGH>
