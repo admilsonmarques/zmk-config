@@ -21,13 +21,18 @@ include:
     shield: corne_dongle_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 
-  # Sweep Pro (Standard Split)
+  # Sweep Pro (Standard Split — sweep_left as central, sweep_right as peripheral)
   - board: nice_nano/nrf52840/zmk
     shield: sweep_left
   - board: nice_nano/nrf52840/zmk
     shield: sweep_right
 
-  # Dongle Central
+  # Sweep Pro (Dongle Peripherals — both halves connect to corne_dongle_dongle)
+  - board: nice_nano/nrf52840/zmk
+    shield: sweep_dongle_left
+  # sweep_right reused as-is: sweep_right.conf sets ROLE_CENTRAL=n by default
+
+  # Universal Dongle Central (works with Corne and Sweep)
   - board: xiao_ble/nrf52840/zmk
     shield: corne_dongle_dongle
 
