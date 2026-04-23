@@ -1,5 +1,11 @@
 #include "sweep.dtsi"
 
+// Shift right-side physical cols 0-4 to global cols 6-10
+// (col-offset=6 aligns with Corne Dongle's 12-col matrix layout)
+&default_transform {
+	col-offset = <6>;
+};
+
 &right_encoder {
 	status = "okay";
 };
@@ -49,18 +55,3 @@
 	device = <&glidepoint>;
 };
 
-&kscan0 {
-	col-gpios
-	= <&none> // Col 6 (Dongle index)
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&gpio1 13 GPIO_PULL_DOWN> // Col 6 (Corne Right Inner)
-	, <&gpio1 15 GPIO_PULL_DOWN> // Col 7
-	, <&gpio0 2 GPIO_PULL_DOWN>  // Col 8
-	, <&gpio0 29 GPIO_PULL_DOWN> // Col 9
-	, <&gpio0 31 GPIO_PULL_DOWN> // Col 10
-	;
-};

@@ -1,6 +1,11 @@
 #include "sweep.dtsi"
 #include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
 
+// Shift left-side physical cols 0-4 to global cols 1-5
+&default_transform {
+	col-offset = <1>;
+};
+
 &left_encoder {
 	status = "okay";
 };
@@ -97,14 +102,4 @@
 		zephyr,display = &display0;
 	};
 
-	kscan0: kscan0 {
-		col-gpios
-		= <&none>                          // Col 0 (Outer, unused)
-		, <&gpio1 13 GPIO_PULL_DOWN>       // Col 1
-		, <&gpio1 15 GPIO_PULL_DOWN>       // Col 2
-		, <&gpio0 2  GPIO_PULL_DOWN>       // Col 3
-		, <&gpio0 29 GPIO_PULL_DOWN>       // Col 4
-		, <&gpio0 31 GPIO_PULL_DOWN>       // Col 5
-		;
-	};
 };
