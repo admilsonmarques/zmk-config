@@ -14,7 +14,6 @@
 #include "../../../behaviors/homerow_mods.dtsi"
 #include "../../../behaviors/keymap_layers.h"
 
-&led_strip { chain-length = <27>; };
 &soft_off   { hold-time-ms = <5000>; };
 &lt         { tapping-term-ms = <200>; quick_tap_ms = <200>; };
 

@@ -1,5 +1,9 @@
 #include "sweep.dtsi"
 
+&default_transform {
+	col-offset = <6>;
+};
+
 &right_encoder {
 	status = "okay";
 };
@@ -33,7 +37,7 @@
 	clock-frequency = <400000>;
 	
 	glidepoint: glidepoint@2a{
-		compatible = "cirque,pinnacle2";
+		compatible = "cirque,pinnacle";
 		reg = <0x2a>;
 		status = "okay";
 		data-ready-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH)>;
@@ -49,18 +53,8 @@
 	device = <&glidepoint>;
 };
 
-&kscan0 {
-	col-gpios
-	= <&none> // Col 6 (Dongle index)
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&none>
-	, <&gpio1 13 GPIO_PULL_DOWN> // Col 6 (Corne Right Inner)
-	, <&gpio1 15 GPIO_PULL_DOWN> // Col 7
-	, <&gpio0 2 GPIO_PULL_DOWN>  // Col 8
-	, <&gpio0 29 GPIO_PULL_DOWN> // Col 9
-	, <&gpio0 31 GPIO_PULL_DOWN> // Col 10
-	;
+// cirque compatible fixed on this branch
+&glidepoint_split {
+	status = "okay";
+	device = <&glidepoint>;
 };

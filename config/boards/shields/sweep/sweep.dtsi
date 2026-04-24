@@ -12,19 +12,15 @@
 		<&gpio1 06 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
 		
 		// 12 columns to match Corne Dongle matrix size
+		// 5 physical columns per side, same GPIO pins on both halves.
+		// col-offset in each side's overlay maps to global cols:
+		//   left: offset=1 → cols 1-5   right: offset=6 → cols 6-10
 		col-gpios
-		= <&none> // Col 0 (Outer)
-		, <&gpio1 13 GPIO_PULL_DOWN> // Col 1
-		, <&gpio1 15 GPIO_PULL_DOWN> // Col 2
-		, <&gpio0 2 GPIO_PULL_DOWN>  // Col 3
-		, <&gpio0 29 GPIO_PULL_DOWN> // Col 4
-		, <&gpio0 31 GPIO_PULL_DOWN> // Col 5
-		, <&none> // Col 6 (Inner Right)
-		, <&none> // Col 7
-		, <&none> // Col 8
-		, <&none> // Col 9
-		, <&none> // Col 10
-		, <&none> // Col 11
+		= <&gpio1 13 GPIO_PULL_DOWN>
+		, <&gpio1 15 GPIO_PULL_DOWN>
+		, <&gpio0 2 GPIO_PULL_DOWN>
+		, <&gpio0 29 GPIO_PULL_DOWN>
+		, <&gpio0 31 GPIO_PULL_DOWN>
 		;
 	};
 	
@@ -145,12 +141,12 @@
 / {
 	split_inputs {
 		#address-cells = <1>;
-		#address-cells = <1>;
 		#size-cells = <0>;
 		
 		glidepoint_split: glidepoint_split@0 {
 			compatible = "zmk,input-split";
 			reg = <0>;
+			status = "disabled";
 		};
 	};
 	glidepoint_listener: glidepoint_listener {
