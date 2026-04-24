@@ -1,99 +1,98 @@
-//
-//                                                        ▀▀▀▀▀     ▀▀▀▀▀          ▀▀█▀▀
-//                                                        ▄▀▀▀▄  ▄  ▄▀▀▀▄  ▄  ▄▀▀▀▄  █  ▄▀▀▀▄
-//                                                        █   █  █  █   █  █  █   █  █  █   █
-//                                                         ▀▀▀   █   ▀▀▀   █   ▀▀▀   ▀   ▀▀▀
-//                                                               █      ▄▄▄█▄▄▄    █   █  
-//                                                               ▀      █  █  █     █▄█
-//                                                             ▀▀▀▀▀    █  █  █      ▀
-//                                                                      ▀  ▀  ▀
-//
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+/*
+ * TOTEM keymap
+ * Physical layout: 10+10+12+6 = 38 keys
+ *   Rows 0-1:  10 inner keys only
+ *   Row 2:     &kp ESC  [10 inner]  &kp BSLH  (outer keys on bottom row)
+ *   Thumbs:    KM_THUMBS (6 keys, no outer encoder positions)
+ */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include "behaviors/character_map.dtsi"
-#define BASE        0
-#define NUMBERS     1
-#define SYMBOLS     2
-#define MEDIA       3
-#define NAV         4
-#define FUNCTIONS   5
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/reset.h>
+#include "../../../behaviors/character_map.dtsi"
+#include "../../../behaviors/homerow_mods.dtsi"
+#include "../../../behaviors/keymap_layers.h"
 
-&lt {
-     tapping-term-ms = <200>;
-     quick_tap_ms = <200>;
-};
+&soft_off { hold-time-ms = <5000>; };
+&lt       { tapping-term-ms = <200>; quick_tap_ms = <200>; };
 
 / {
-behaviors {
-    hm: homerow_mods {
-      compatible = "zmk,behavior-hold-tap";
-      label = "HOMEROW_MODS";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      quick_tap_ms = <200>;
-      require-prior-idle-ms = <125>;
-      flavor = "balanced";
-      global-quick-tap;
-      bindings = <&kp>, <&kp>;
-    };
-  }; 
-  keymap {
+    KM_COND_LAYERS
+
+    keymap {
         compatible = "zmk,keymap";
 
-        Base {
+        base_layer {
+            display-name = "Base";
             bindings = <
-              &kp Q       &kp W       &kp E          &kp R         &kp T        &kp Y        &kp U          &kp I          &kp O          &kp P
-              &hm LGUI A  &hm LALT S  &hm LCTRL D    &hm LSHFT F   &kp G        &kp H        &hm RSHFT J    &hm RCTRL K    &hm RALT L     &hm RGUI SEMICOLON 
-&kp ESCAPE    &kp Z       &kp X       &kp C          &kp V         &kp B        &kp N        &kp M          &kp COMMA      &kp PERIOD     &kp SLASH           &kp BACKSLASH 
-                                     &lt MEDIA BACKSPACE &lt NUMBERS TAB &lt NAV SPACE  &lt FUNCTIONS RETURN &mo SYMBOLS &kp  DEL 
+                KM_BASE_R0
+                KM_BASE_R1
+                &kp ESC  KM_BASE_R2  &kp BSLH
+                KM_THUMBS
             >;
         };
 
-        Numbers {
+        numbers_layer {
+            display-name = "Numbers";
             bindings = <
-              &kp NUMBER_1       &kp NUMBER_2      &kp NUMBER_3       &kp NUMBER_4       &kp NUMBER_5 &kp NUMBER_6  &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9 &kp NUMBER_0 
-              &hm LGUI NUMBER_6  &hm LALT NUMBER_7 &hm LCTRL NUMBER_8 &hm LSHFT NUMBER_9 &kp NUMBER_0 &kp SEMICOLON &hm RSHFT LEFT &hm RCTRL DOWN &hm RALT UP  &hm RGUI RIGHT
-&trans        &none              &none             &none              &none              &none        &none         &none          &kp COMMA      &kp PERIOD   &kp SLASH      &none
-                                         &trans        &trans     &trans      &trans    &trans        &trans
+                KM_NUMS_R0
+                KM_NUMS_R1
+                &trans  KM_NUMS_R2  &trans
+                KM_NUMS_T
             >;
         };
 
-        Symbols {
+        symbols_layer {
+            display-name = "Symbols";
             bindings = <
-        &kp EXCLAMATION  &kp AT          &kp HASH      &kp DOLLAR     &kp PERCENT  &kp CARET      &kp AMPS         &kp ASTERISK    &kp MINUS      &kp EQUAL
-        &hm LGUI TILDE   &hm LALT GRAVE  &hm LCTRL SQT &hm LSHFT DQT  &none        &kp MINUS      &hm RSHFT EQUAL  &hm RCTRL LPAR  &hm RALT RPAR  &hm RGUI BACKSLASH
-&trans  &none            &none           &none         &kp UNDERSCORE &kp PLUS     &kp UNDERSCORE &kp PLUS         &kp LBKT        &kp RBKT       &kp SLASH            &kp HOME
-                          &trans    &trans      &trans         &trans     &trans         &trans
+                KM_SYMS_R0
+                KM_SYMS_R1
+                &trans  KM_SYMS_R2  &trans
+                KM_SYMS_T
             >;
         };
 
-        Media {
+        media_layer {
+            display-name = "Media";
             bindings = <
-        &none     &kp C_VOL_DN  &kp C_MUTE &kp C_VOL_UP &none     &none   &kp C_PREV    &kp C_PP    &kp C_NEXT    &none 
-        &none     &kp C_PREV    &kp C_PP   &kp C_NEXT   &none     &none   &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &none
-&trans  &trans    &trans        &trans     &trans       &trans    &trans  &trans        &trans      &trans        &kp F20  &none
-                             &none &none &none &none &none &none
+                KM_MEDI_R0
+                KM_MEDI_R1
+                &trans  KM_MEDI_R2  &trans
+                KM_MEDI_T
             >;
         };
 
-        Navigation {
+        nav_layer {
+            display-name = "Navigation";
             bindings = <
-            &kp LEFT       &kp DOWN            &kp UP            &kp RIGHT     &none  &none  &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP &kp END
-            &hm LGUI HOME  &hm LALT PAGE_DOWN  &hm LCTRL PAGE_UP &hm LSHFT END &none  &none  &hm RSHFT LEFT &hm RCTRL DOWN &hm RALT UP &hm RGUI RIGHT
-   &trans   &none          &none               &none             &none         &none  &none  &none          &none          &none       &none           &none
-                           &none &none &none &none &none &none             
+                KM_NAV_R0
+                KM_NAV_R1
+                &trans  KM_NAV_R2  &trans
+                KM_NAV_T
             >;
         };
 
-     Functions {
-       bindings = <
-       &kp F6 &kp F7 &kp F8 &kp F9  &kp F10          &kp F1 &kp F2 &kp F3 &kp F4 &kp F5
-       &kp F1 &kp F2 &kp F3 &kp F4  &kp F5           &kp F6 &kp F7 &kp F8 &kp F9 &kp F10  
-&trans &none  &none  &none  &kp DEL &kp PRINTSCREEN  &none  &none  &none  &none  &none    &none
-       &none &none &none  &none &none &none 
-      >;
+        system_layer {
+            display-name = "System";
+            bindings = <
+                KM_SYS_R0
+                KM_SYS_R1
+                &trans  KM_SYS_R2  &trans
+                KM_SYS_T
+            >;
+        };
+
+        functions_layer {
+            display-name = "Functions";
+            bindings = <
+                KM_FUNC_R0
+                KM_FUNC_R1
+                &trans  KM_FUNC_R2  &trans
+                KM_FUNC_T
+            >;
+        };
     };
-  };
 };
