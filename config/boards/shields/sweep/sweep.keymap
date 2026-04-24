@@ -48,15 +48,15 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         
-        // NUMBERS + SYMBOLS = MEDIA
+        // NAV (left3) + SYMBOLS (right2) = MEDIA
         tri_media {
-            if-layers = <NUMBERS SYMBOLS>;
+            if-layers = <NAV SYMBOLS>;
             then-layer = <MEDIA>;
         };
-        
-        // NAV + FUNCTIONS = SYSTEM
+
+        // NUMBERS (left2) + FUNCTIONS (right1) = SYSTEM
         tri_system {
-            if-layers = <NAV FUNCTIONS>;
+            if-layers = <NUMBERS FUNCTIONS>;
             then-layer = <SYSTEM>;
         };
     };
