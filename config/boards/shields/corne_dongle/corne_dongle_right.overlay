@@ -10,6 +10,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        zmk,underglow = &led_strip;
     };
 
     default_transform: keymap_transform_0 {
@@ -48,4 +49,8 @@
             , <&gpio0 31 GPIO_ACTIVE_HIGH>
             ;
     };
+};
+
+&led_strip {
+    chain-length = <27>;
 }; 
