@@ -14,11 +14,11 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
 1. Commit and push your changes to trigger a GitHub Actions build
 2. Download the new firmware ZIP file
 3. You should now have these files:
-   - `settings_reset-seeeduino_xiao_ble-zmk.uf2` (for dongle)
-   - `settings_reset-nice_nano_v2-zmk.uf2` (for left/right halves)
-   - `corne_dongle_left-nice_nano_v2-zmk.uf2`
-   - `corne_dongle_right-nice_nano_v2-zmk.uf2`
-   - `corne_dongle_dongle-seeeduino_xiao_ble-zmk.uf2`
+   - `settings_reset-xiao_ble-zmk.uf2` (for dongle)
+   - `settings_reset-nice_nano-zmk.uf2` (for left/right halves)
+   - `corne_dongle_left-nice_nano-zmk.uf2`
+   - `corne_dongle_right-nice_nano-zmk.uf2`
+   - `corne_dongle_dongle-xiao_ble-zmk.uf2`
 
 ## **Step 2: Complete Reset Procedure**
 
