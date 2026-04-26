@@ -1,307 +1,188 @@
-# 🔌 GPIO Configuration Guide
+# GPIO Configuration Reference
 
-A detailed visual explanation of how GPIO pins are configured for the Corne Dongle setup.
-
----
-
-## 🏗️ Overview: Matrix Scanning
-
-### **How Keyboard Matrix Works**
-```
-         COLUMNS (COL)
-    │ C0 │ C1 │ C2 │ C3 │ C4 │ C5 │
-────┼────┼────┼────┼────┼────┼────┤
-R0  │ Q  │ W  │ E  │ R  │ T  │ Y  │ ← ROW 0
-────┼────┼────┼────┼────┼────┼────┤
-R1  │ A  │ S  │ D  │ F  │ G  │ H  │ ← ROW 1
-────┼────┼────┼────┼────┼────┼────┤
-R2  │ Z  │ X  │ C  │ V  │ B  │ N  │ ← ROW 2
-────┼────┼────┼────┼────┼────┼────┤
-R3  │    │    │    │BSP │TAB │SPC │ ← ROW 3
-    ↑    ↑    ↑    ↑    ↑    ↑
-   ROWS (ROW)
-```
-
-**Scanning Process:**
-1. **Activate Row**: Set one row HIGH
-2. **Read Columns**: Check which columns detect the signal
-3. **Key Detection**: If Row X + Column Y = Key pressed at (X,Y)
-4. **Repeat**: Scan all rows continuously
+Pin assignments for each keyboard shield.
 
 ---
 
-## 📟 nice!nano v2 Pinout
+## Corne Dongle Peripherals (nice_nano)
 
-### **Physical Pin Layout**
+Both halves share the same row GPIOs. Columns are physically mirrored on the right side.
+
+### Row GPIOs (identical on both halves)
+
+| Row | GPIO | nRF Pin |
+|---|---|---|
+| 0 | `gpio0 22` | P0.22 |
+| 1 | `gpio0 24` | P0.24 |
+| 2 | `gpio1 0`  | P1.00 |
+| 3 | `gpio0 11` | P0.11 |
+
+Pull: `GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN`, diode direction: `col2row`.
+
+### Column GPIOs — Left Half (col-offset = 0, global cols 0-5)
+
+| Local col | GPIO | nRF Pin | Key column |
+|---|---|---|---|
+| 0 | `gpio0 31` | P0.31 | Q / A / Z |
+| 1 | `gpio0 29` | P0.29 | W / S / X |
+| 2 | `gpio0 2`  | P0.02 | E / D / C |
+| 3 | `gpio1 15` | P1.15 | R / F / V |
+| 4 | `gpio1 13` | P1.13 | T / G / B |
+| 5 | `gpio1 11` | P1.11 | (outer column) |
+
+### Column GPIOs — Right Half (col-offset = 6, global cols 6-11)
+
+| Local col | GPIO | nRF Pin | Key column |
+|---|---|---|---|
+| 0 | `gpio1 11` | P1.11 | (outer column) |
+| 1 | `gpio1 13` | P1.13 | Y / H / N |
+| 2 | `gpio1 15` | P1.15 | U / J / M |
+| 3 | `gpio0 2`  | P0.02 | I / K / , |
+| 4 | `gpio0 29` | P0.29 | O / L / . |
+| 5 | `gpio0 31` | P0.31 | P / ; / / |
+
+### Matrix layout (global 12-column space)
+
 ```
-     nice!nano v2 (Top View)
-    ┌─────────────────────────┐
-    │  ●                   ● │ ← VCC / GND
-    │  ● P0.02          P1.15 ● │
-    │  ● P0.29          P1.13 ● │
-    │  ● P0.31          P1.11 ● │
-    │  ● P1.13          P0.10 ● │
-    │  ● P1.15          P0.09 ● │
-    │  ● P0.02          P0.06 ● │
-    │  ● P0.29          P0.08 ● │
-    │  ● P0.31          P1.09 ● │
-    │  ● VCC           P0.06  ● │
-    │  ● RST           P0.04  ● │
-    │  ● GND           P1.04  ● │
-    │  ● P1.06         P1.06  ● │
-    │  ● P1.04         P1.02  ● │
-    │  ● P1.02         P1.00  ● │
-    │  ● P1.00         P0.22  ● │
-    │  ● P0.22         P0.24  ● │
-    │  ● P0.24         P1.00  ● │
-    │  ● P1.00         P0.11  ● │
-    │  ● P0.11         P1.08  ● │
-    │  ● P1.08         P1.01  ● │
-    │  ● P1.01         P1.03  ● │
-    │  ● P1.03           GND ● │
-    │  ●               VCC   ● │
-    └─────────────────────────┘
+Global cols:  0   1   2   3   4   5     6   7   8   9  10  11
+Row 0:       [-]  Q   W   E   R   T  │  Y   U   I   O   P  [-]
+Row 1:       [-] A/G S/A D/C F/S  G  │  H  J/S K/C L/A ;/G [-]
+Row 2:       [-]  Z   X   C   V   B  │  N   M   ,   .   /  [-]
+Row 3:                   BSP TAB SPC │ RET ESC DEL
 ```
 
-### **GPIO Reference Translation**
-```
-ZMK Reference  →  Physical Pin  →  Function
-─────────────────────────────────────────────
-&gpio0 22      →  P0.22        →  Row 0
-&gpio1 2       →  P1.02        →  Row 1  
-&gpio1 3       →  P1.03        →  Row 2
-&gpio1 1       →  P1.01        →  Row 3
-
-&gpio0 31      →  P0.31        →  Col 0
-&gpio0 29      →  P0.29        →  Col 1
-&gpio0 2       →  P0.02        →  Col 2
-&gpio1 15      →  P1.15        →  Col 3
-&gpio1 13      →  P1.13        →  Col 4
-&gpio1 11      →  P1.11        →  Col 5
-```
+`[-]` = outer column, bound to `&none` in the universal dongle keymap.
+Thumbs: global RC(3,3)–RC(3,5) left, RC(3,6)–RC(3,8) right.
 
 ---
 
-## 🎹 Left Half Configuration
+## Sweep Pro Peripherals (nice_nano)
 
-### **GPIO Assignment (nice_nano)**
-```
-Row Configuration:
-  ROW 0: P0.22 (gpio0 22) ─┐
-  ROW 1: P1.02 (gpio1 2)  ─┤
-  ROW 2: P1.03 (gpio1 3)  ─┤ ROWS
-  ROW 3: P1.01 (gpio1 1)  ─┘
+### Row GPIOs (identical on both halves)
 
-Column Configuration:
-  COL 0: P0.31 (gpio0 31) ─┐
-  COL 1: P0.29 (gpio0 29) ─┤
-  COL 2: P0.02 (gpio0 2)  ─┤ COLUMNS
-  COL 3: P1.15 (gpio1 15) ─┤
-  COL 4: P1.13 (gpio1 13) ─┤
-  COL 5: P1.11 (gpio1 11) ─┘
+| Row | GPIO | nRF Pin |
+|---|---|---|
+| 0 | `gpio0 9`  | P0.09 |
+| 1 | `gpio0 10` | P0.10 |
+| 2 | `gpio1 11` | P1.11 |
+| 3 | `gpio1 6`  | P1.06 |
+
+Pull: `GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN`, diode direction: `col2row`.
+
+### Column GPIOs — Left Half (col-offset = 1, global cols 1-5)
+
+| Local col | GPIO | nRF Pin |
+|---|---|---|
+| 0 | `gpio1 13` | P1.13 |
+| 1 | `gpio1 15` | P1.15 |
+| 2 | `gpio0 2`  | P0.02 |
+| 3 | `gpio0 29` | P0.29 |
+| 4 | `gpio0 31` | P0.31 |
+
+### Column GPIOs — Right Half (col-offset = 6, global cols 6-10)
+
+| Local col | GPIO | nRF Pin |
+|---|---|---|
+| 0 | `gpio1 13` | P1.13 |
+| 1 | `gpio1 15` | P1.15 |
+| 2 | `gpio0 2`  | P0.02 |
+| 3 | `gpio0 29` | P0.29 |
+| 4 | `gpio0 31` | P0.31 |
+
+### Matrix layout (global 12-column space)
+
+```
+Global cols:  1   2   3   4   5     6   7   8   9  10
+Row 0:        Q   W   E   R   T  │  Y   U   I   O   P
+Row 1:       A/G S/A D/C F/S  G  │  H  J/S K/C L/A ;/G
+Row 2:        Z   X   C   V   B  │  N   M   ,   .   /
+Row 3:                TAB SPC   │    RET ESC
 ```
 
-### **Left Half Matrix Map**
-```
-         C0    C1    C2    C3    C4    C5
-       ┌─────┬─────┬─────┬─────┬─────┬─────┐
-    R0 │  Q  │  W  │  E  │  R  │  T  │  -  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R1 │  A  │  S  │  D  │  F  │  G  │  -  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R2 │  Z  │  X  │  C  │  V  │  B  │  -  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R3 │  -  │  -  │  -  │ BSP │ TAB │ SPC │
-       └─────┴─────┴─────┴─────┴─────┴─────┘
+Cols 0 and 11 are unused. Thumbs: RC(3,3)–RC(3,5) left, RC(3,6)–RC(3,8) right.
 
-Physical Pins Used:
-Rows: P0.22, P1.02, P1.03, P1.01
-Cols: P0.31, P0.29, P0.02, P1.15, P1.13, P1.11
-```
+### Encoders (left half)
+
+| Signal | GPIO | nRF Pin |
+|---|---|---|
+| A | `gpio0 11` | P0.11 |
+| B | `gpio1 0`  | P1.00 |
+
+### E-ink Display SPI (left half, SSD1680)
+
+| Signal | GPIO | nRF Pin |
+|---|---|---|
+| SCK (SPIM) | `gpio0 24` | P0.24 |
+| MOSI (SPIM) | `gpio0 22` | P0.22 |
+| CS | `gpio0 17` | P0.17 |
+| DC | `gpio0 20` | P0.20 |
+| RST | `gpio1 4`  | P1.04 |
+| BUSY | `gpio0 6`  | P0.06 |
+
+### Cirque Trackpad I2C (right half, addr 0x2A)
+
+| Signal | GPIO | nRF Pin |
+|---|---|---|
+| SDA | `gpio0 20` | P0.20 |
+| SCL | `gpio0 17` | P0.17 |
+| Data ready | `gpio0 22` | P0.22 |
 
 ---
 
-## 🎹 Right Half Configuration
+## Totem Peripherals (xiao_ble)
 
-### **GPIO Assignment (nice_nano)**
-```
-Row Configuration: (SAME as left!)
-  ROW 0: P0.22 (gpio0 22) ─┐
-  ROW 1: P1.02 (gpio1 2)  ─┤
-  ROW 2: P1.03 (gpio1 3)  ─┤ ROWS
-  ROW 3: P1.01 (gpio1 1)  ─┘
+### Row GPIOs (identical on both halves, xiao_d alias)
 
-Column Configuration: (REVERSED!)
-  COL 0: P1.11 (gpio1 11) ─┐
-  COL 1: P1.13 (gpio1 13) ─┤
-  COL 2: P1.15 (gpio1 15) ─┤ COLUMNS
-  COL 3: P0.02 (gpio0 2)  ─┤ (Mirrored)
-  COL 4: P0.29 (gpio0 29) ─┤
-  COL 5: P0.31 (gpio0 31) ─┘
+| Row | xiao_d pin |
+|---|---|
+| 0 | `xiao_d 0` |
+| 1 | `xiao_d 1` |
+| 2 | `xiao_d 2` |
+| 3 | `xiao_d 3` |
+
+### Column GPIOs — Left Half (col-offset = 1, global cols 1-5)
+
+`xiao_d 4, 5, 10, 9, 8`
+
+### Column GPIOs — Right Half (col-offset = 6, global cols 6-10)
+
+`xiao_d 8, 9, 10, 5, 4`
+
+### Matrix layout (global 12-column space)
+
+```
+Global cols:  1   2   3   4   5     6   7   8   9  10
+Row 0:        Q   W   E   R   T  │  Y   U   I   O   P
+Row 1:       A/G S/A D/C F/S  G  │  H  J/S K/C L/A ;/G
+Row 3(outer) ESC  Z   X   C   V   B  │  N   M   ,   .   /  BSLH
+Row 3:                TAB SPC RET│ RET ESC DEL
 ```
 
-### **Right Half Matrix Map**
-```
-         C0    C1    C2    C3    C4    C5
-       ┌─────┬─────┬─────┬─────┬─────┬─────┐
-    R0 │  -  │  Y  │  U  │  I  │  O  │  P  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R1 │  -  │  H  │  J  │  K  │  L  │  ;  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R2 │  -  │  N  │  M  │  ,  │  .  │  /  │
-       ├─────┼─────┼─────┼─────┼─────┼─────┤
-    R3 │ RET │ ESC │ DEL │  -  │  -  │  -  │
-       └─────┴─────┴─────┴─────┴─────┴─────┘
-
-Physical Pins Used:
-Rows: P0.22, P1.02, P1.03, P1.01 (Same as left)
-Cols: P1.11, P1.13, P1.15, P0.02, P0.29, P0.31 (Reversed)
-```
+Outer keys: RC(3,1) = ESC (left), RC(3,10) = BSLH (right). Thumbs: RC(3,3)–RC(3,5) / RC(3,6)–RC(3,8).
 
 ---
 
-## 📡 Dongle Configuration
+## Universal Dongle (xiao_ble)
 
-### **xiao_ble Layout**
+No physical GPIO scanning — uses `zmk,kscan-mock`. Receives key events from all peripherals over BLE.
+
+Transform covers the full global 12-column space:
+
 ```
-      XIAO BLE nRF52840 (Top View)
-    ┌─────────────────────────┐
-    │  ● P0.02  P0.03 ●      │ ← A0/D0, A1/D1
-    │  ● P0.28  P0.29 ●      │ ← A2/D2, A3/D3  
-    │  ● P0.04  P0.05 ●      │ ← A4/D4, A5/D5
-    │  ● P0.06  P1.11 ●      │ ← A6/D6, A7/D7
-    │  ● P0.30  P1.12 ●      │ ← A8/D8, A9/D9
-    │  ● P0.31  P1.13 ●      │ ← A10/D10, A11/RX
-    │  ● GND    VCC  ●       │
-    │  ● P1.15  P1.14 ●      │ ← SDA, SCL
-    │  ● P1.10   RST ●       │ ← TX, RST
-    │  ● 3V3     GND ●       │
-    └─────────────────────────┘
+Rows 0-2: RC(*,0)–RC(*,11)         (42 finger keys)
+Row 3:    RC(3,1) RC(3,3-5) RC(3,6-8) RC(3,10)  (8 thumb/outer keys)
 ```
 
-### **Mock Scan Configuration**
-```
-📡 DONGLE (No Physical Keys!)
-┌─────────────────────────────┐
-│        Mock KScan           │
-│                             │
-│   • No GPIO pins needed     │
-│   • No physical switches    │
-│   • Just wireless receiver  │
-│   • Forwards key events     │
-│                             │
-│  Left Half ──┐  ┌── Right   │
-│      BLE     │  │    Half   │
-│              ▼  ▼           │
-│         [ Dongle ]          │
-│              │              │
-│              ▼              │
-│         Computer            │
-│      (USB or BLE)           │
-└─────────────────────────────┘
-```
+Total: 50 key positions (44 used by Corne keymap). Corne outer cols RC(*,0)/RC(*,11) and Sweep cols 0/11 are never pressed; they're bound to `&none` in the keymap.
 
 ---
 
-## 🔌 Pin Mapping Summary
+## RGB Underglow — Corne Dongle Peripherals
 
-### **Left Half (nice_nano)**
-| Function | GPIO Ref | Physical Pin | Description |
-|----------|----------|--------------|-------------|
-| Row 0    | gpio0 22 | P0.22        | Top row scan |
-| Row 1    | gpio1 2  | P1.02        | Home row scan |
-| Row 2    | gpio1 3  | P1.03        | Bottom row scan |
-| Row 3    | gpio1 1  | P1.01        | Thumb row scan |
-| Col 0    | gpio0 31 | P0.31        | Q, A, Z column |
-| Col 1    | gpio0 29 | P0.29        | W, S, X column |
-| Col 2    | gpio0 2  | P0.02        | E, D, C column |
-| Col 3    | gpio1 15 | P1.15        | R, F, V column |
-| Col 4    | gpio1 13 | P1.13        | T, G, B column |
-| Col 5    | gpio1 11 | P1.11        | -, -, - column |
+The LED strip is configured in `boards/nice_nano_nrf52840_zmk.overlay` (auto-applied for nice_nano builds):
 
-### **Right Half (nice_nano)**
-| Function | GPIO Ref | Physical Pin | Description |
-|----------|----------|--------------|-------------|
-| Row 0    | gpio0 22 | P0.22        | Top row scan |
-| Row 1    | gpio1 2  | P1.02        | Home row scan |
-| Row 2    | gpio1 3  | P1.03        | Bottom row scan |
-| Row 3    | gpio1 1  | P1.01        | Thumb row scan |
-| Col 0    | gpio1 11 | P1.11        | -, H, N column |
-| Col 1    | gpio1 13 | P1.13        | Y, J, M column |
-| Col 2    | gpio1 15 | P1.15        | U, K, , column |
-| Col 3    | gpio0 2  | P0.02        | I, L, . column |
-| Col 4    | gpio0 29 | P0.29        | O, ;, / column |
-| Col 5    | gpio0 31 | P0.31        | P, -, - column |
+| Signal | GPIO | nRF Pin | Protocol |
+|---|---|---|---|
+| Data (MOSI) | SPI3 | P0.06 | WS2812-SPI |
 
-### **Dongle (xiao_ble)**
-| Function | Configuration | Description |
-|----------|---------------|-------------|
-| Scanning | Mock KScan    | No physical pins used |
-| Purpose  | BLE Central   | Receives from peripherals |
-| Keys     | None          | Pure wireless coordinator |
-
----
-
-## ⚡ Key Technical Points
-
-### **Diode Direction: col2row**
-```
-ROW ──►──[Diode]──►── COLUMN
-    (High)         (Detected)
-
-When row goes HIGH:
-• Current flows through pressed key's diode
-• Column pin detects the signal
-• Key position = (active_row, detected_column)
-```
-
-### **Pull-down Resistors on Rows**
-```
-Row Pin Configuration:
-(GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-
-• PULL_DOWN: Keeps row at LOW when not driven
-• ACTIVE_HIGH: Row goes HIGH when scanning
-• Prevents floating pins and false triggers
-```
-
-### **Why Columns are Reversed on Right Half?**
-```
-Left Half Columns:  [C0 C1 C2 C3 C4 C5]
-Right Half Columns: [C5 C4 C3 C2 C1 C0]
-
-Physical Layout:
-Left:  Q W E R T    Right:  Y U I O P
-       ↑ ↑ ↑ ↑ ↑            ↑ ↑ ↑ ↑ ↑
-     C0C1C2C3C4           C1C2C3C4C5
-
-The right side is physically mirrored, so
-column assignments are reversed to match!
-```
-
----
-
-## 🧠 Matrix Scanning Flow
-
-```
-1. Initialize GPIO
-   ├── Set all rows as OUTPUT (LOW)
-   ├── Set all columns as INPUT
-   └── Enable pull-down on rows
-
-2. Scanning Loop
-   ├── Set Row 0 HIGH ──┐
-   ├── Read all columns ┤ → Check for key presses
-   ├── Set Row 0 LOW ───┘
-   ├── Set Row 1 HIGH ──┐
-   ├── Read all columns ┤ → Check for key presses  
-   ├── Set Row 1 LOW ───┘
-   └── Repeat for all rows...
-
-3. Key Detection
-   ├── Row N + Column M = Key at position (N,M)
-   ├── Send key event to ZMK
-   └── ZMK processes keymap
-```
-
-This configuration ensures reliable key detection while maximizing battery life and connection stability! 🎯 
+Chain length: 27 LEDs per half. Color order: GRB.
