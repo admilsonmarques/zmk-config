@@ -1,7 +1,7 @@
 #include "sweep.dtsi"
 
 &default_transform {
-	col-offset = <5>;
+	col-offset = <6>;
 };
 
 &right_encoder {
@@ -27,7 +27,7 @@
 };
 
 &i2c0 {
-	compatible = "nordic,nrf-twim";// I2C controller instead of generic
+	compatible = "nordic,nrf-twim";
 	status = "okay";
 	
 	pinctrl-0 = <&i2c0_default>;
@@ -50,5 +50,11 @@
 };
 
 &glidepoint_split {
+	device = <&glidepoint>;
+};
+
+// cirque compatible fixed on this branch
+&glidepoint_split {
+	status = "okay";
 	device = <&glidepoint>;
 };

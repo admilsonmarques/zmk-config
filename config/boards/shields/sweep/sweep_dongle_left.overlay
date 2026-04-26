@@ -9,13 +9,8 @@
 	status = "okay";
 };
 
-&glidepoint_split {
-	status = "okay";
-};
-
-&glidepoint_listener {
-	status = "okay";
-};
+// glidepoint_listener intentionally NOT enabled:
+// in dongle-peripheral mode the dongle (central) handles input events.
 
 &pinctrl {
 	spi0_default: spi0_default {
@@ -24,7 +19,7 @@
 			<NRF_PSEL(SPIM_MOSI, 0, 22)>;
 		};
 	};
-	
+
 	spi0_sleep: spi0_sleep {
 		group1 {
 			psels = <NRF_PSEL(SPIM_SCK, 0, 24)>,
@@ -52,7 +47,7 @@
 		status = "okay";
 		#address-cells = <1>;
 		#size-cells = <0>;
-		
+
 		display0: display@0 {
 			compatible = "solomon,ssd1680";
 			status = "okay";
@@ -60,29 +55,27 @@
 			width = <152>;
 			height = <152>;
 			rotation = <90>;
-			
+
 			mipi-max-frequency = <4000000>;
 			busy-gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
 			tssv = <0x80>;
-			
+
 			full {
 				border-waveform = <0x05>;
 			};
-			
+
 			partial {
 				border-waveform = <0x05>;
 				dummy-line = <0x1a>;
 				gate-line-width = <0x08>;
 				vcom = <0x22>;
 				lut = [
-				/* 电压动作 (每行 12 字节) */
 				00 40 00 00 00 00 00 00 00 00 00 00
 				80 80 00 00 00 00 00 00 00 00 00 00
 				40 40 00 00 00 00 00 00 00 00 00 00
 				00 80 00 00 00 00 00 00 00 00 00 00
 				00 00 00 00 00 00 00 00 00 00 00 00
-				
-				/* 时序控制 (严格按官方 7 字节一行排版) */
+
 				0F 00 00 00 00 00 00
 				01 01 00 00 00 00 00
 				00 00 00 00 00 00 00
@@ -95,14 +88,13 @@
 				00 00 00 00 00 00 00
 				00 00 00 00 00 00 00
 				00 00 00 00 00 00 00
-				
-				/* 电压等级定义 (9 字节) */
+
 				22 22 22 22 22 22 00 00 00
 				];
 			};
 		};
 	};
-	
+
 	chosen {
 		zephyr,display = &display0;
 	};
