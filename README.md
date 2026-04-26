@@ -104,18 +104,19 @@ Each keyboard wraps the shared macros with its own outer structure:
 ### Thumb Cluster (Sweep)
 
 ```
-  ┌────────┬────────────┬────────────┐   ┌────────────┬────────────┬──────────┐
-  │ C_MUTE │  NUM/TAB   │  NAV/SPC   │   │  FUN/RET   │  SYM/ESC   │  Studio  │
-  │(encoder)│           │            │   │            │            │ (encoder)│
-  └────────┴────────────┴────────────┘   └────────────┴────────────┴──────────┘
+  ┌──────────┬────────────┬────────────┐   ┌────────────┬────────────┬──────────┐
+  │  C_MUTE  │  NUM/TAB   │  NAV/SPC   │   │  FUN/RET   │  SYM/ESC   │  Studio  │
+  │ (encoder)│            │            │   │            │            │ (encoder)│
+  └──────────┴────────────┴────────────┘   └────────────┴────────────┴──────────┘
+   outer                  inner                          inner         outer
 ```
 
 ### BSPC / DEL without encoder clicks (Sweep)
 
 | Action | How |
 |---|---|
-| Backspace | Hold NUMBERS → the left outer thumb becomes `BSPC` |
-| Delete | Hold SYMBOLS → the right inner thumb becomes `DEL` |
+| Backspace | Hold **SYMBOLS** (`SYM/ESC`) → tap `NAV/SPC` (left inner 2) = `BSPC` |
+| Delete | Hold **NUMBERS** (`NUM/TAB`) → tap `SYM/ESC` (right inner 2) = `DEL` |
 
 ---
 

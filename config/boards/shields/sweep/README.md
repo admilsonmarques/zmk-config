@@ -36,11 +36,11 @@ Two operating modes:
 ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
 │    Z    │    X    │    C    │    V    │    B    │   │    N    │    M    │    ,    │    .    │    /    │
 ╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
-                    │ NUM/TAB │ NAV/SPC │  Enc L  │   │  Enc R  │ FUN/RET │ SYM/ESC │
+                    │  Enc L  │ NUM/TAB │ NAV/SPC │   │ FUN/RET │ SYM/ESC │  Enc R  │
                     ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
 ```
 
-Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock.
+Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock. Encoders are the **outer** thumb keys.
 
 ### Numbers Layer (1)
 
@@ -52,7 +52,7 @@ Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock.
 ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
 │    -    │    -    │    -    │    -    │    -    │   │    -    │    -    │    ,    │    .    │    /    │
 ╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
-                    │  (---)  │   BSPC  │  Mute   │   │ PgUp/Dn │   RET   │   DEL   │
+                    │  Mute   │   (---) │   SPC   │   │   RET   │   DEL   │ Studio  │
                     ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
 ```
 
@@ -66,7 +66,7 @@ Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock.
 ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
 │    -    │    -    │    -    │    _    │    +    │   │    _    │    +    │    [    │    ]    │    /    │
 ╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
-                    │   BSPC  │   SPC   │  Mute   │   │ PgUp/Dn │   RET   │  (---)  │
+                    │  Mute   │   TAB   │   BSPC  │   │   RET   │   (---) │ Studio  │
                     ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
 ```
 
@@ -74,12 +74,19 @@ Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock.
 
 ## BSPC and DEL without encoder clicks
 
-The outer thumb keys activate layers (not available as BSPC/DEL). Access them via the mirror-thumb trick:
+The outer thumbs are encoders, so they're unavailable as layer-tap keys. Access BSPC and DEL via the mirror-thumb approach:
 
 | Want | How |
 |---|---|
-| **Backspace** | Hold **NUMBERS** (left inner) → left outer thumb sends `BSPC` |
-| **Delete** | Hold **SYMBOLS** (right inner) → right inner thumb sends `DEL` |
+| **Backspace** | Hold **SYMBOLS** (`SYM/ESC`, right inner 2) → tap `NAV/SPC` (left inner 2) = `BSPC` |
+| **Delete** | Hold **NUMBERS** (`NUM/TAB`, left inner 1) → tap `SYM/ESC` (right inner 2) = `DEL` |
+
+Thumb positions for reference:
+```
+Outer-L   Inner-L1  Inner-L2    Inner-R1  Inner-R2  Outer-R
+ Enc L    NUM/TAB   NAV/SPC  |  FUN/RET   SYM/ESC   Enc R
+ C_MUTE   (NUMBERS) (NAV)   |  (FUNCS)  (SYMBOLS)  Studio
+```
 
 ---
 
