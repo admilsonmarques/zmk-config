@@ -18,7 +18,7 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
    - `settings_reset-nice_nano-zmk.uf2` (for left/right halves)
    - `corne_dongle_left-nice_nano-zmk.uf2`
    - `corne_dongle_right-nice_nano-zmk.uf2`
-   - `corne_dongle_dongle-xiao_ble-zmk.uf2`
+   - `universal_dongle-xiao_ble-zmk.uf2`
 
 ## **Step 2: Complete Reset Procedure**
 
@@ -32,17 +32,17 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
 #### A. Reset the Dongle
 1. Disconnect dongle from USB
 2. Put dongle in bootloader mode (double-tap reset)
-3. Flash `settings_reset-seeeduino_xiao_ble-zmk.uf2`
+3. Flash `settings_reset-xiao_ble/nrf52840/zmk-zmk.uf2`
 4. Wait for it to complete, then disconnect
 
 #### B. Reset Left Half
 1. Put left half in bootloader mode (double-tap reset)
-2. Flash `settings_reset-nice_nano_v2-zmk.uf2`
+2. Flash `settings_reset-nice_nano/nrf52840/zmk-zmk.uf2`
 3. Wait for it to complete, then disconnect
 
 #### C. Reset Right Half
 1. Put right half in bootloader mode (double-tap reset)
-2. Flash `settings_reset-nice_nano_v2-zmk.uf2`
+2. Flash `settings_reset-nice_nano/nrf52840/zmk-zmk.uf2`
 3. Wait for it to complete, then disconnect
 
 ## **Step 3: Flash New Firmware**
@@ -51,19 +51,19 @@ After updating your `build.yaml`, rebuild your firmware to get the new `settings
 
 #### A. Flash Left Half
 1. Put left half in bootloader mode
-2. Flash `corne_dongle_left-nice_nano_v2-zmk.uf2`
+2. Flash `corne_dongle_left-nice_nano/nrf52840/zmk-zmk.uf2`
 3. **Wait 15 seconds** after flashing completes
 4. Disconnect and set aside
 
 #### B. Flash Right Half
 1. Put right half in bootloader mode
-2. Flash `corne_dongle_right-nice_nano_v2-zmk.uf2`
+2. Flash `corne_dongle_right-nice_nano/nrf52840/zmk-zmk.uf2`
 3. **Wait 15 seconds** after flashing completes
 4. Disconnect and set aside
 
 #### C. Flash Dongle
 1. Put dongle in bootloader mode
-2. Flash `corne_dongle_dongle-seeeduino_xiao_ble-zmk.uf2`
+2. Flash `universal_dongle-xiao_ble/nrf52840/zmk-zmk.uf2`
 3. **Wait 15 seconds** after flashing completes
 
 ## **Step 4: Pairing Procedure**

@@ -7,7 +7,7 @@ A complete ZMK configuration for the Corne keyboard with **dongle support** usin
 ```
 ┌─────────────────┐    Bluetooth    ┌─────────────────┐
 │   Corne Left    │◄──────────────►│   Corne Right   │
-│   nice_nano_v2  │                │   nice_nano_v2  │
+│   nice_nano/nrf52840/zmk  │                │   nice_nano/nrf52840/zmk  │
 │   (Peripheral)  │                │   (Peripheral)  │
 └─────────────────┘                └─────────────────┘
          │                                    │
@@ -15,7 +15,7 @@ A complete ZMK configuration for the Corne keyboard with **dongle support** usin
          ▼                                    ▼
   ┌─────────────────────────────────────────────────────┐
   │              Corne Dongle                           │
-  │           seeeduino_xiao_ble                        │
+  │           xiao_ble/nrf52840/zmk                        │
   │              (Central)                              │
   └─────────────────┬───────────────────────────────────┘
                     │
@@ -28,7 +28,7 @@ A complete ZMK configuration for the Corne keyboard with **dongle support** usin
 
 ## ✨ Features
 
-- 🔗 **Mixed Board Support**: nice_nano_v2 halves + seeeduino_xiao_ble dongle
+- 🔗 **Mixed Board Support**: nice_nano/nrf52840/zmk halves + xiao_ble/nrf52840/zmk dongle
 - 🔄 **Dual Connectivity**: USB + Bluetooth (up to 5 BT profiles)
 - 🔋 **Power Optimized**: Halves can sleep, dongle stays awake
 - ⌨️ **7 Layers**: Base, Numbers, Symbols, Media, Navigation, Functions, System
@@ -159,7 +159,7 @@ USB Cable   ──► 🖥️ Desktop (Direct)
 ### **Flashing Firmware**
 1. **Left Half**: Flash `corne_dongle_left.uf2` to nice_nano
 2. **Right Half**: Flash `corne_dongle_right.uf2` to nice_nano  
-3. **Dongle**: Flash `corne_dongle_dongle.uf2` to xiao_ble
+3. **Dongle**: Flash `universal_dongle.uf2` to xiao_ble
 
 ### **Initial Setup**
 1. Flash `settings_reset.uf2` to all three devices first
