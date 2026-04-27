@@ -1,39 +1,33 @@
-# 🎹 Ade's Sweep-Pro Configuration
+# Ade's Sweep Pro Configuration
 
-A premium ZMK configuration for the Ferris Sweep-Pro, featuring an E-ink display, Cirque trackpad, and a custom "Corne-Hybrid" logical layout.
+ZMK firmware for the Ferris Sweep Pro — nice_nano halves with e-ink display (left) and Cirque Pinnacle trackpad (right).
 
-## 🏗️ Hardware Setup
+## Hardware
 
 ```
 ┌─────────────────┐    Bluetooth    ┌─────────────────┐
 │   Sweep Left    │◄──────────────►│   Sweep Right   │
-│   (Peripheral)  │                │   (Peripheral)  │
+│   (Central)     │                │   (Peripheral)  │
 │  ┌───────────┐  │                │  ┌───────────┐  │
 │  │  E-Ink    │  │                │  │  Cirque   │  │
-│  │  Display  │  │                │  │ Trackpad  │  │
+│  │  SSD1680  │  │                │  │ Pinnacle  │  │
 │  └───────────┘  │                │  └───────────┘  │
 └─────────────────┘                └─────────────────┘
-         │                                  │
-         └────────────────┬─────────────────┘
-                          │
-                 Bluetooth / USB HID
-                    (5 Devices)
 ```
 
-## ✨ Features
+Two operating modes:
 
-- 📄 **E-Ink Support**: 1.54" SSD1680 display for status and WPM
-- 🖱️ **Trackpad Integration**: Cirque Pinnacle 2 support with dedicated Mouse layer
-- 🎛️ **Smart Encoders**: Context-aware behavior that changes per layer
-- 🧠 **Corne Muscle Memory**: 34-key adaptation of a 42-key workflow
-- 🔗 **Dual Connectivity**: USB + Bluetooth (up to 5 profiles)
-- 🏠 **Homerow Mods**: Balanced GUI/Alt/Ctrl/Shift on home row
+| Mode | Central | Trackpad |
+|---|---|---|
+| Standalone | `sweep_left` (left half) | Active, relative mode |
+| Dongle | `sweep_dongle_left` (peripheral) + `universal_dongle` | Forwarded via BLE split |
 
 ---
 
-## 🗺️ Keyboard Layout
+## Keyboard Layout
 
-### 🏠 Base Layer (0)
+### Base Layer (0)
+
 ```
 ╭─────────┬─────────┬─────────┬─────────┬─────────╮   ╭─────────┬─────────┬─────────┬─────────┬─────────╮
 │    Q    │    W    │    E    │    R    │    T    │   │    Y    │    U    │    I    │    O    │    P    │
@@ -42,11 +36,14 @@ A premium ZMK configuration for the Ferris Sweep-Pro, featuring an E-ink display
 ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
 │    Z    │    X    │    C    │    V    │    B    │   │    N    │    M    │    ,    │    .    │    /    │
 ╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
-                    │ NUM/TAB │ NAV/SPC │ Encoder │   │ Encoder │ FUN/RET │ SYM/ESC │
+                    │  Enc L  │ NUM/TAB │ NAV/SPC │   │ FUN/RET │ SYM/ESC │  Enc R  │
                     ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
 ```
 
-### 🔢 Numbers Layer (1)
+Encoder clicks: `Enc L` = `C_MUTE`, `Enc R` = ZMK Studio unlock. Encoders are the **outer** thumb keys.
+
+### Numbers Layer (1)
+
 ```
 ╭─────────┬─────────┬─────────┬─────────┬─────────╮   ╭─────────┬─────────┬─────────┬─────────┬─────────╮
 │    1    │    2    │    3    │    4    │    5    │   │    6    │    7    │    8    │    9    │    0    │
@@ -55,58 +52,91 @@ A premium ZMK configuration for the Ferris Sweep-Pro, featuring an E-ink display
 ├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
 │    -    │    -    │    -    │    -    │    -    │   │    -    │    -    │    ,    │    .    │    /    │
 ╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
-                    │   ---   │   BSP   │ Undo/Red│   │ Word Nav│   RET   │   ESC   │
+                    │  Mute   │   (---) │   SPC   │   │   RET   │   DEL   │ Studio  │
+                    ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
+```
+
+### Symbols Layer (2)
+
+```
+╭─────────┬─────────┬─────────┬─────────┬─────────╮   ╭─────────┬─────────┬─────────┬─────────┬─────────╮
+│    !    │    @    │    #    │    $    │    %    │   │    ^    │    &    │    *    │    -    │    =    │
+├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
+│  GUI/~  │  ALT/`  │  CTL/'  │  SFT/"  │    -    │   │    -    │  SFT/=  │  CTL/(  │  ALT/)  │  GUI/\  │
+├─────────┼─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┼─────────┤
+│    -    │    -    │    -    │    _    │    +    │   │    _    │    +    │    [    │    ]    │    /    │
+╰─────────┴─────────┼─────────┼─────────┼─────────┤   ├─────────┼─────────┼─────────┼─────────┴─────────╯
+                    │  Mute   │   TAB   │   BSPC  │   │   RET   │   (---) │ Studio  │
                     ╰─────────┴─────────┴─────────╯   ╰─────────┴─────────┴─────────╯
 ```
 
 ---
 
-## 🎡 Smart Encoders
+## BSPC and DEL without encoder clicks
 
-The encoders change behavior based on your active layer:
+The outer thumbs are encoders, so they're unavailable as layer-tap keys. Access BSPC and DEL via the mirror-thumb approach:
 
-| Layer | Left Encoder (Rotation) | Right Encoder (Rotation) |
-|-------|-------------------------|--------------------------|
-| Base | 🔊 Volume Up / Down | 📜 Page Up / Down |
-| Numbers | 🔄 Redo / Undo | ⏩ Next / Prev Word |
-| Nav | ⬆️ Line Up / Down | ⬅️ Char Left / Right |
-| Media | 🔊 Volume Up / Down | ⏭️ Next / Prev Track |
-| Mouse | ↕️ Vertical Scroll | ↔️ Horizontal Scroll |
+| Want | How |
+|---|---|
+| **Backspace** | Hold **SYMBOLS** (`SYM/ESC`, right inner 2) → tap `NAV/SPC` (left inner 2) = `BSPC` |
+| **Delete** | Hold **NUMBERS** (`NUM/TAB`, left inner 1) → tap `SYM/ESC` (right inner 2) = `DEL` |
 
----
-
-## 🧠 The "Corne" Caveats
-
-Since the Sweep has fewer thumb keys than a Corne, the following logic is used:
-
-- **Contextual BSPC**: When holding **NUMBERS**, the Left Outer thumb becomes **Backspace**.
-- **Contextual DEL**: When holding **SYMBOLS**, the Right Inner thumb becomes **Delete**.
-- **Tri-Layers**: 
-    - `NUM` + `SYM` = **MEDIA LAYER**
-    - `NAV` + `FUNC` = **SYSTEM LAYER**
+Thumb positions for reference:
+```
+Outer-L   Inner-L1  Inner-L2    Inner-R1  Inner-R2  Outer-R
+ Enc L    NUM/TAB   NAV/SPC  |  FUN/RET   SYM/ESC   Enc R
+ C_MUTE   (NUMBERS) (NAV)   |  (FUNCS)  (SYMBOLS)  Studio
+```
 
 ---
 
-## 🚀 Getting Started
+## Conditional Layers
 
-### **Flashing Firmware**
-1. **Left Half**: Flash `sweep_left.uf2`
-2. **Right Half**: Flash `sweep_right.uf2`
-
-### **Initial Setup**
-1. Flash `settings_reset.uf2` to both halves
-2. Power on left half (Central) → right half (Peripheral)
-3. Connect left half via USB or pair via Bluetooth
+| Combination | Result |
+|---|---|
+| NAV + SYMBOLS held together | Media layer (3) |
+| NUMBERS + FUNCTIONS held together | System layer (5) |
 
 ---
 
-## 📝 Layer Legend
+## Smart Encoders
 
-| Symbol | Description |
-|--------|-------------|
-| `GUI/A` | Hold for GUI, Tap for A |
-| `NUM/TAB`| Hold for Numbers, Tap for Tab |
-| `---` | Layer activation key |
-| `Studio` | ZMK Studio Unlock key |
+| Layer | Left encoder | Right encoder |
+|---|---|---|
+| Base | Volume ↑↓ | Page Up/Down |
+| Numbers | — | Next/Prev Word |
+| Nav | Line Up/Down | Char Left/Right |
+| Media | Volume ↑↓ | Next/Prev Track |
+| Mouse | Scroll vertical | Scroll horizontal |
 
-Enjoy your optimized Sweep-Pro setup! 🎉
+---
+
+## Flashing Firmware
+
+### Standalone mode
+
+1. Flash `settings_reset-nice_nano-zmk.uf2` to both halves
+2. Flash `sweep_left-nice_nano-zmk.uf2` to left half (becomes central)
+3. Flash `sweep_right-nice_nano-zmk.uf2` to right half
+4. Power on left → right auto-pairs
+
+### Dongle mode
+
+1. Flash `settings_reset` to both halves and the dongle
+2. Flash `sweep_dongle_left-nice_nano-zmk.uf2` to left half (peripheral, e-ink shows status)
+3. Flash `sweep_right-nice_nano-zmk.uf2` to right half (same firmware as standalone)
+4. Flash `universal_dongle-xiao_ble-zmk.uf2` to dongle
+5. Power on dongle → halves auto-pair
+
+> Note: in dongle mode the Cirque trackpad on the right half is forwarded to the dongle via BLE split (`zmk,input-split`).
+
+---
+
+## Layer Legend
+
+| Symbol | Meaning |
+|---|---|
+| `GUI/A` | Hold = GUI, tap = A |
+| `NUM/TAB` | Hold = Numbers layer, tap = Tab |
+| `(---)` | Layer-activation thumb key |
+| `Studio` | ZMK Studio unlock |

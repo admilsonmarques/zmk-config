@@ -2,11 +2,16 @@
  * Sweep Pro keymap
  * Physical layout: 10+10+10+6 = 36 keys (no outer columns)
  *   Rows 0-2:  10 keys (no outer wrapping needed)
- *   Thumbs:    encoder-click  KM_MID_T  encoder-click  (6 keys)
+ *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  studio_unlock
+ *              (encoder-outer)  (inner 4)              (inner 4)  (encoder-outer)
  *
- * BSPC/DEL access without encoder clicks:
- *   Hold SYMBOLS (right-2) + tap NUMBERS (left-2) = BSPC  (KM_SYMS_T pos2)
- *   Hold NUMBERS (left-2)  + tap SYMBOLS (right-2) = DEL  (KM_NUMS_T pos5)
+ * BSPC/DEL without encoder clicks:
+ *   Hold NUMBERS (NUM/TAB) + tap SYM/ESC (right-inner-2) = DEL
+ *   Hold SYMBOLS (SYM/ESC) + tap NAV/SPC (left-inner-2)  = BSPC
+ *
+ * Non-base thumb rows have exactly 6 bindings (no KM_*_T wrappers).
+ * KM_NUMS_T/KM_SYMS_T are 6-binding macros designed for Corne (8 thumbs)
+ * and Totem (6 thumbs direct). The sweep uses custom inline bindings here.
  */
 
 // Copyright (c) 2022 The ZMK Contributors
@@ -62,7 +67,8 @@
                 KM_NUMS_R0
                 KM_NUMS_R1
                 KM_NUMS_R2
-                &trans  KM_NUMS_T  &trans
+                // ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R
+                &trans  &trans  &kp SPACE  &kp RET  &kp DEL  &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
         };
@@ -73,7 +79,8 @@
                 KM_SYMS_R0
                 KM_SYMS_R1
                 KM_SYMS_R2
-                &trans  KM_SYMS_T  &trans
+                // ENC-L  NUM/TAB  NAV/SPC→BSPC  FUN/RET  SYM/ESC  ENC-R
+                &trans  &trans  &kp BSPC  &kp RET  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -84,7 +91,7 @@
                 KM_MEDI_R0
                 KM_MEDI_R1
                 KM_MEDI_R2
-                &trans  KM_MEDI_T  &trans
+                KM_MEDI_T
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -95,7 +102,7 @@
                 KM_NAV_R0
                 KM_NAV_R1
                 KM_NAV_R2
-                &trans  KM_NAV_T  &trans
+                KM_NAV_T
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -106,7 +113,7 @@
                 KM_SYS_R0
                 KM_SYS_R1
                 KM_SYS_R2
-                &trans  KM_SYS_T  &trans
+                KM_SYS_T
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -117,7 +124,7 @@
                 KM_FUNC_R0
                 KM_FUNC_R1
                 KM_FUNC_R2
-                &trans  KM_FUNC_T  &trans
+                KM_FUNC_T
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
