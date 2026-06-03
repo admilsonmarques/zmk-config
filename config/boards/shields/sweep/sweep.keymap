@@ -68,7 +68,7 @@
                 KM_NUMS_R1
                 KM_NUMS_R2
                 // ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R
-                &trans  &trans  &kp SPACE  &kp RET  &kp DEL  &trans
+                &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
         };
@@ -79,8 +79,8 @@
                 KM_SYMS_R0
                 KM_SYMS_R1
                 KM_SYMS_R2
-                // ENC-L  NUM/TAB  NAV/SPC→BSPC  FUN/RET  SYM/ESC  ENC-R
-                &trans  &trans  &kp BSPC  &kp RET  &trans  &trans
+                // ENC-L  NUM/TAB→BSPC  NAV/SPC→DEL  FUN/RET  SYM/ESC  ENC-R
+                &trans   &kp BSPC  &kp DEL &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
