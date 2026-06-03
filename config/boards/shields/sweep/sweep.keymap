@@ -60,7 +60,7 @@
                 KM_BASE_R2
                 &kp C_MUTE  KM_MID_T  &kp C_PP
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         numbers_layer {
@@ -119,7 +119,7 @@
                 // ENC-L        NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &bootloader  &trans  &trans  &trans  &trans  &sys_reset
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         functions_layer {
@@ -130,7 +130,7 @@
                 KM_FUNC_R2
                 KM_FUNC_T
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         // Sweep-exclusive: cirque trackpad mouse layer
