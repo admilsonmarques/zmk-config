@@ -41,7 +41,7 @@
 		reg = <0x2a>;
 		status = "okay";
 		data-ready-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH)>;
-		sensitivity = "2x";
+		sensitivity = "3x";
 		data-mode = "relative";
 		primary-tap-enable;
 		sleep-mode-enable;
