@@ -2,16 +2,18 @@
  * Sweep Pro keymap
  * Physical layout: 10+10+10+6 = 36 keys (no outer columns)
  *   Rows 0-2:  10 keys (no outer wrapping needed)
- *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  studio_unlock
- *              (encoder-outer)  (inner 4)              (inner 4)  (encoder-outer)
+ *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  C_PP
+ *              (enc-L)  (inner 4)                  (inner 4)  (enc-R)
+ *
+ * Encoder-adjacent outer thumbs (enc-L=RC(3,3), enc-R=RC(3,8)):
+ *   Base layer:  C_MUTE (left), C_PP (right)
+ *   Media layer: C_PP (left), C_MUTE (right) — swapped
+ *   System layer: &bootloader (left), &sys_reset (right)
+ *   All other layers: &trans → falls through to base
  *
  * BSPC/DEL without encoder clicks:
  *   Hold NUMBERS (NUM/TAB) + tap SYM/ESC (right-inner-2) = DEL
  *   Hold SYMBOLS (SYM/ESC) + tap NAV/SPC (left-inner-2)  = BSPC
- *
- * Non-base thumb rows have exactly 6 bindings (no KM_*_T wrappers).
- * KM_NUMS_T/KM_SYMS_T are 6-binding macros designed for Corne (8 thumbs)
- * and Totem (6 thumbs direct). The sweep uses custom inline bindings here.
  */
 
 // Copyright (c) 2022 The ZMK Contributors
@@ -56,9 +58,9 @@
                 KM_BASE_R0
                 KM_BASE_R1
                 KM_BASE_R2
-                &kp C_MUTE  KM_MID_T  &studio_unlock
+                &kp C_MUTE  KM_MID_T  &kp C_PP
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         numbers_layer {
@@ -80,7 +82,7 @@
                 KM_SYMS_R1
                 KM_SYMS_R2
                 // ENC-L  NUM/TAB→BSPC  NAV/SPC→DEL  FUN/RET  SYM/ESC  ENC-R
-                &trans   &kp BSPC  &kp DEL &trans  &trans  &trans
+                &trans  &kp BSPC  &kp DEL  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -91,7 +93,8 @@
                 KM_MEDI_R0
                 KM_MEDI_R1
                 KM_MEDI_R2
-                KM_MEDI_T
+                // ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
+                &kp C_PP  &trans  &trans  &trans  &trans  &kp C_MUTE
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -113,9 +116,10 @@
                 KM_SYS_R0
                 KM_SYS_R1
                 KM_SYS_R2
-                KM_SYS_T
+                // ENC-L        NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
+                &bootloader  &trans  &trans  &trans  &trans  &sys_reset
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         functions_layer {
@@ -126,7 +130,7 @@
                 KM_FUNC_R2
                 KM_FUNC_T
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         // Sweep-exclusive: cirque trackpad mouse layer

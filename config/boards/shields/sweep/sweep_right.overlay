@@ -49,10 +49,6 @@
 	};
 };
 
-&glidepoint_split {
-	device = <&glidepoint>;
-};
-
 // cirque compatible fixed on this branch
 &glidepoint_split {
 	status = "okay";
