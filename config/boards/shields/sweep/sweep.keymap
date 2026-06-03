@@ -1,17 +1,16 @@
 /*
  * Sweep Pro keymap
- * Physical layout: 10+10+10+6 = 36 keys (no outer columns)
+ * Physical layout: 10+10+10+8 = 38 keys
  *   Rows 0-2:  10 keys (no outer wrapping needed)
- *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  studio_unlock
- *              (encoder-outer)  (inner 4)              (inner 4)  (encoder-outer)
+ *   Thumbs:    L_ENC  C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  studio_unlock  R_ENC
+ *              (push) (encoder-outer)  (inner 4)        (inner 4)  (encoder-outer)  (push)
+ *
+ * RC(3,1) and RC(3,10) are encoder push-button keys (press the knob).
+ * They default to &none in base; media and system layers give them useful functions.
  *
  * BSPC/DEL without encoder clicks:
  *   Hold NUMBERS (NUM/TAB) + tap SYM/ESC (right-inner-2) = DEL
  *   Hold SYMBOLS (SYM/ESC) + tap NAV/SPC (left-inner-2)  = BSPC
- *
- * Non-base thumb rows have exactly 6 bindings (no KM_*_T wrappers).
- * KM_NUMS_T/KM_SYMS_T are 6-binding macros designed for Corne (8 thumbs)
- * and Totem (6 thumbs direct). The sweep uses custom inline bindings here.
  */
 
 // Copyright (c) 2022 The ZMK Contributors
@@ -56,7 +55,7 @@
                 KM_BASE_R0
                 KM_BASE_R1
                 KM_BASE_R2
-                &kp C_MUTE  KM_MID_T  &studio_unlock
+                &none  &kp C_MUTE  KM_MID_T  &studio_unlock  &none
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -67,8 +66,8 @@
                 KM_NUMS_R0
                 KM_NUMS_R1
                 KM_NUMS_R2
-                // ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R
-                &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans
+                // L_ENC  ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R  R_ENC
+                &trans  &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
         };
@@ -79,8 +78,8 @@
                 KM_SYMS_R0
                 KM_SYMS_R1
                 KM_SYMS_R2
-                // ENC-L  NUM/TAB→BSPC  NAV/SPC→DEL  FUN/RET  SYM/ESC  ENC-R
-                &trans   &kp BSPC  &kp DEL &trans  &trans  &trans
+                // L_ENC  ENC-L→BSPC  NUM/TAB→DEL  NAV/SPC  FUN/RET  SYM/ESC  ENC-R  R_ENC
+                &trans  &trans  &kp BSPC  &kp DEL  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -91,7 +90,8 @@
                 KM_MEDI_R0
                 KM_MEDI_R1
                 KM_MEDI_R2
-                KM_MEDI_T
+                // L_ENC  ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R  R_ENC
+                &kp C_PP  &trans  &trans  &trans  &trans  &trans  &trans  &kp C_MUTE
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
@@ -102,7 +102,8 @@
                 KM_NAV_R0
                 KM_NAV_R1
                 KM_NAV_R2
-                KM_NAV_T
+                // L_ENC  ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R  R_ENC
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
@@ -113,7 +114,8 @@
                 KM_SYS_R0
                 KM_SYS_R1
                 KM_SYS_R2
-                KM_SYS_T
+                // L_ENC     ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R      R_ENC
+                &bootloader &trans  &trans  &trans  &trans  &trans  &trans  &sys_reset
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -124,7 +126,8 @@
                 KM_FUNC_R0
                 KM_FUNC_R1
                 KM_FUNC_R2
-                KM_FUNC_T
+                // L_ENC  ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R  R_ENC
+                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -136,7 +139,8 @@
                 &tog MOUSE  &mkp MB4  &mkp MCLK  &mkp MB5  &trans    &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &tog MOUSE
                 &trans      &trans    &trans      &trans    &trans    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans
                 &trans      &trans    &trans      &trans    &trans    &trans         &mkp MB4       &mkp MCLK    &mkp MB5        &trans
-                &trans      &kp SPACE &kp LSHFT   &mkp LCLK &mkp RCLK &trans
+                // L_ENC  ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R  R_ENC
+                &trans  &trans  &kp SPACE &kp LSHFT  &mkp LCLK  &mkp RCLK  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp RIGHT LEFT>;
         };
