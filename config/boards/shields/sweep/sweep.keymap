@@ -2,12 +2,12 @@
  * Sweep Pro keymap
  * Physical layout: 10+10+10+6 = 36 keys (no outer columns)
  *   Rows 0-2:  10 keys (no outer wrapping needed)
- *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  studio_unlock
+ *   Thumbs:    C_MUTE  NUM/TAB  NAV/SPC  |  FUN/RET  SYM/ESC  C_PP
  *              (enc-L)  (inner 4)                  (inner 4)  (enc-R)
  *
  * Encoder-adjacent outer thumbs (enc-L=RC(3,3), enc-R=RC(3,8)):
- *   Base layer: C_MUTE (left), studio_unlock (right)
- *   Media layer: C_PP (left), C_MUTE (right)
+ *   Base layer:  C_MUTE (left), C_PP (right)
+ *   Media layer: C_PP (left), C_MUTE (right) — swapped
  *   System layer: &bootloader (left), &sys_reset (right)
  *   All other layers: &trans → falls through to base
  *
@@ -58,7 +58,7 @@
                 KM_BASE_R0
                 KM_BASE_R1
                 KM_BASE_R2
-                &kp C_MUTE  KM_MID_T  &studio_unlock
+                &kp C_MUTE  KM_MID_T  &kp C_PP
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
