@@ -1,9 +1,18 @@
 /*
- * TOTEM keymap
- * Physical layout: 10+10+12+6 = 38 keys
- *   Rows 0-1:  10 inner keys only
- *   Row 2:     &kp ESC  [10 inner]  &kp BSLH  (outer keys on bottom row)
- *   Thumbs:    KM_THUMBS (6 keys, no outer encoder positions)
+ * TOTEM keymap — 44 bindings per layer to match universal dongle layout.
+ * Dummy &none at outer columns (0, 11) and thumb positions RC(3,1), RC(3,10)
+ * keep binding indices aligned with the dongle's 12-column transform.
+ *
+ * Physical layout: 10+10+10+6 = 36 real keys per side (totem has 38 due to
+ * ESC/BSLH on bottom finger row, but those map to &none in dongle mode).
+ *   Rows 0-1:  10 inner keys, plus 2 dummy &none at each end
+ *   Row 2:     10 inner keys, plus 2 dummy &none at each end
+ *   Thumbs:    KM_THUMBS (6 keys), plus 2 dummy &none at RC(3,1) and RC(3,10)
+ *
+ * Note: the totem's physical outer keys (ESC on bottom-left, BSLH on
+ * bottom-right) map to RC(2,1) and RC(2,10) in the aligned transform —
+ * they produce Z and SLASH in dongle mode. This is a hardware wiring
+ * limitation. ESC is available via SYM layer-tap, BSLH via function layer.
  */
 
 #include <behaviors.dtsi>
@@ -29,70 +38,70 @@
         base_layer {
             display-name = "Base";
             bindings = <
-                KM_BASE_R0
-                KM_BASE_R1
-                &kp ESC  KM_BASE_R2  &kp BSLH
-                KM_THUMBS
+                &none  KM_BASE_R0  &none
+                &none  KM_BASE_R1  &none
+                &none  KM_BASE_R2  &none
+                &kp ESC  KM_THUMBS  &kp BSLH
             >;
         };
 
         numbers_layer {
             display-name = "Numbers";
             bindings = <
-                KM_NUMS_R0
-                KM_NUMS_R1
-                &trans  KM_NUMS_R2  &trans
-                KM_NUMS_T
+                &none  KM_NUMS_R0  &none
+                &none  KM_NUMS_R1  &none
+                &none  KM_NUMS_R2  &none
+                &trans  KM_NUMS_T  &trans
             >;
         };
 
         symbols_layer {
             display-name = "Symbols";
             bindings = <
-                KM_SYMS_R0
-                KM_SYMS_R1
-                &trans  KM_SYMS_R2  &trans
-                KM_SYMS_T
+                &none  KM_SYMS_R0  &none
+                &none  KM_SYMS_R1  &none
+                &none  KM_SYMS_R2  &none
+                &trans  KM_SYMS_T  &trans
             >;
         };
 
         media_layer {
             display-name = "Media";
             bindings = <
-                KM_MEDI_R0
-                KM_MEDI_R1
-                &trans  KM_MEDI_R2  &trans
-                KM_MEDI_T
+                &none  KM_MEDI_R0  &none
+                &none  KM_MEDI_R1  &none
+                &none  KM_MEDI_R2  &none
+                &trans  KM_MEDI_T  &trans
             >;
         };
 
         nav_layer {
             display-name = "Navigation";
             bindings = <
-                KM_NAV_R0
-                KM_NAV_R1
-                &trans  KM_NAV_R2  &trans
-                KM_NAV_T
+                &none  KM_NAV_R0  &none
+                &none  KM_NAV_R1  &none
+                &none  KM_NAV_R2  &none
+                &trans  KM_NAV_T  &trans
             >;
         };
 
         system_layer {
             display-name = "System";
             bindings = <
-                KM_SYS_R0
-                KM_SYS_R1
-                &trans  KM_SYS_R2  &trans
-                KM_SYS_T
+                &none  KM_SYS_R0  &none
+                &none  KM_SYS_R1  &none
+                &none  KM_SYS_R2  &none
+                &trans  KM_SYS_T  &trans
             >;
         };
 
         functions_layer {
             display-name = "Functions";
             bindings = <
-                KM_FUNC_R0
-                KM_FUNC_R1
-                &trans  KM_FUNC_R2  &trans
-                KM_FUNC_T
+                &none  KM_FUNC_R0  &none
+                &none  KM_FUNC_R1  &none
+                &none  KM_FUNC_R2  &none
+                &trans  KM_FUNC_T  &trans
             >;
         };
     };
