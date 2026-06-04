@@ -18,20 +18,8 @@
 #define SYSTEM    5
 #define FUNCTIONS 6
 
-// ─── Conditional layers (NAV+SYMBOLS→MEDIA, NUMBERS+FUNCTIONS→SYSTEM) ──────
-// Paste inside / { } after behaviors {}
-#define KM_COND_LAYERS \
-    conditional_layers { \
-        compatible = "zmk,conditional-layers"; \
-        tri_media { \
-            if-layers = <NAV SYMBOLS>; \
-            then-layer = <MEDIA>; \
-        }; \
-        tri_system { \
-            if-layers = <NUMBERS FUNCTIONS>; \
-            then-layer = <SYSTEM>; \
-        }; \
-    };
+// ─── Conditional layers removed — outer thumb keys now use &lt MEDIA / &lt SYSTEM ───
+#define KM_COND_LAYERS /* unused */
 
 // ─── Thumb clusters ─────────────────────────────────────────────────────────
 // 4 middle thumbs — shared by all keyboards

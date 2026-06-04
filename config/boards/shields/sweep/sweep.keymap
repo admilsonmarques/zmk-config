@@ -8,7 +8,7 @@
  *   Thumbs:    6 inner keys, plus 2 dummy &none at RC(3,1) and RC(3,10)
  *
  * Encoder-adjacent outer thumbs (RC(3,3), RC(3,8)):
- *   Base layer:  C_MUTE (left), C_PP (right)
+ *   Base layer:  &lt MEDIA C_MUTE (left), &lt SYSTEM C_PP (right)
  *   Media layer: C_PP (left), C_MUTE (right) — swapped
  *   System layer: &bootloader (left), &sys_reset (right)
  *   All other layers: &trans → falls through to base
@@ -60,7 +60,7 @@
                 &none  KM_BASE_R0  &none
                 &none  KM_BASE_R1  &none
                 &none  KM_BASE_R2  &none
-                &none  &kp C_MUTE  KM_MID_T  &kp C_PP  &none
+                &none  &lt MEDIA C_MUTE  KM_MID_T  &lt SYSTEM C_PP  &none
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
