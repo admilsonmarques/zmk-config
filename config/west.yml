@@ -15,6 +15,9 @@ manifest:
       import: west.yml
     - name: cirque-input-module
       remote: nxtkb
-      revision: main
+      # Pinned: main (2026-05-04, e60bcaf8) subscribes centrals to
+      # zmk_split_peripheral_status_changed, which this ZMK fork only
+      # implements on peripheral builds -> sweep_left link error.
+      revision: 7b6b7913ae294bbccae4db8ae550ea7d38f63e9a
   self:
     path: config
