@@ -1,11 +1,23 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+      url-base: https://github.com/lynnlee0522
+    - name: nxtkb
+      url-base: https://github.com/nxtkb
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: 198d030efbfaeb770bd76ad4fcfb6edb67ce3584
       import: app/west.yml
+    - name: zmk-behavior-report
+      remote: nxtkb
+      revision: main
+      import: west.yml
+    - name: cirque-input-module
+      remote: nxtkb
+      # Pinned: main (2026-05-04, e60bcaf8) subscribes centrals to
+      # zmk_split_peripheral_status_changed, which this ZMK fork only
+      # implements on peripheral builds -> sweep_left link error.
+      revision: 7b6b7913ae294bbccae4db8ae550ea7d38f63e9a
   self:
     path: config
