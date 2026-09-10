@@ -37,11 +37,13 @@
 	clock-frequency = <400000>;
 	
 	glidepoint: glidepoint@2a{
-		compatible = "cirque,pinnacle";
+		// Driver comes from nxtkb cirque-input-module — only "cirque,pinnacle2" is provided.
+		compatible = "cirque,pinnacle2";
 		reg = <0x2a>;
 		status = "okay";
 		data-ready-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH)>;
-		sensitivity = "3x";
+		// ADC attenuation: 1x = most sensitive (fastest cursor), 4x = least (slowest).
+		sensitivity = "1x";
 		data-mode = "relative";
 		primary-tap-enable;
 		sleep-mode-enable;
@@ -49,7 +51,7 @@
 	};
 };
 
-// cirque compatible fixed on this branch
+// "cirque,pinnacle2" is the compatible provided by the nxtkb cirque-input-module driver
 &glidepoint_split {
 	status = "okay";
 	device = <&glidepoint>;
