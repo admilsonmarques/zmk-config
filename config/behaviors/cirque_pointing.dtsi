@@ -1,0 +1,30 @@
+/*
+ * Runtime trackpad pointer-speed support (nxtkb cirque-input-module).
+ *
+ * The speed state lives on the CENTRAL: the pointer-speed input processor
+ * is attached to the central's split input listener (sweep_left in
+ * standalone mode, universal_dongle in dongle mode), and the &ptr_spd
+ * behavior (locality CENTRAL) adjusts it from the keymap, whichever half
+ * the key is pressed on.
+ *
+ * Speed table: 1x / 2x / 4x — initial index 0 keeps the static
+ * sensitivity (1x in sweep_right.overlay) until adjusted.
+ */
+
+/ {
+    pointer_processor: pointer_processor {
+        compatible = "zmk,input-processor-pointer-speed";
+        #input-processor-cells = <2>;
+        track-remainders;
+        speed-multipliers = <1 2 4>;
+        speed-divisors = <1 1 1>;
+        initial-speed-index = <0>;
+    };
+
+    behaviors {
+        ptr_spd: ptr_spd {
+            compatible = "zmk,behavior-pointing-speed";
+            #binding-cells = <2>;
+        };
+    };
+};

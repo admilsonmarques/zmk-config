@@ -6,6 +6,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/gpio/gpio.h>
+#include "../../../behaviors/cirque_pointing.dtsi"
 
 / {
     chosen {
@@ -87,5 +88,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&glidepoint_split>;
+        // Pointer-speed processor: scales trackpad REL_X/Y on the central.
+        input-processors = <&pointer_processor 0 0>;
     };
 };
