@@ -50,7 +50,7 @@
                 &trans  KM_NUMS_T  &trans
             >;
             // Right encoder only (left slot cleared).
-            sensor-bindings = <&none &inc_dec_kp LC(LEFT) LC(RIGHT)>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LC(LEFT) LC(RIGHT)>;
         };
 
         symbols_layer {
@@ -62,7 +62,7 @@
                 &trans  KM_SYMS_T  &trans
             >;
             // Left encoder only (right slot cleared).
-            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &sensor_none 0 0>;
         };
 
         media_layer {
@@ -73,7 +73,7 @@
                 &none  KM_MEDI_R2  &none
                 &trans  KM_MEDI_T  &trans
             >;
-            sensor-bindings = <&none &inc_dec_kp C_PREV C_NEXT>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp C_PREV C_NEXT>;
         };
 
         nav_layer {
@@ -84,7 +84,7 @@
                 &none  KM_NAV_R2  &none
                 &trans  KM_NAV_T  &trans
             >;
-            sensor-bindings = <&none &inc_dec_kp LEFT RIGHT>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LEFT RIGHT>;
         };
 
         system_layer {
@@ -96,7 +96,7 @@
                 &trans  KM_SYS_T  &trans
             >;
             // Left encoder only (right slot cleared).
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
 
         functions_layer {
@@ -107,7 +107,7 @@
                 &none  KM_FUNC_R2  &none
                 &trans  KM_FUNC_T  &trans
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
     };
 };

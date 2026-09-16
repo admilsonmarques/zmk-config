@@ -11,6 +11,8 @@
  * sensitivity (1x in sweep_right.overlay) until adjusted.
  */
 
+#include "sensor_none.dtsi"
+
 / {
     pointer_processor: pointer_processor {
         compatible = "zmk,input-processor-pointer-speed";

@@ -1,0 +1,19 @@
+/*
+ * Empty sensor-binding slot.
+ *
+ * The sensor-bindings phandle-array requires every behavior to expose
+ * #sensor-binding-cells, which &none does not. This wrapper reuses the
+ * behavior-none driver with valid sensor cells: at runtime the lookup
+ * fails ("no behavior assigned"), so the keymap falls through to the
+ * next lower layer — the slot inherits the Base layer's function.
+ */
+
+/ {
+    behaviors {
+        sensor_none: sensor_none {
+            compatible = "zmk,behavior-none";
+            #binding-cells = <0>;
+            #sensor-binding-cells = <2>;
+        };
+    };
+};

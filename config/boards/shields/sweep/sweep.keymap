@@ -77,7 +77,7 @@
                 &none  &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans  &none
             >;
             // Right encoder only (left slot cleared).
-            sensor-bindings = <&none &inc_dec_kp LC(LEFT) LC(RIGHT)>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LC(LEFT) LC(RIGHT)>;
         };
 
         symbols_layer {
@@ -90,7 +90,7 @@
                 &none  &trans  &kp BSPC  &kp DEL  &trans  &trans  &trans  &none
             >;
             // Left encoder only (right slot cleared).
-            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &sensor_none 0 0>;
         };
 
         media_layer {
@@ -102,7 +102,7 @@
                 //       ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &kp C_PP  &trans  &trans  &trans  &trans  &kp C_MUTE  &none
             >;
-            sensor-bindings = <&none &inc_dec_kp C_PREV C_NEXT>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp C_PREV C_NEXT>;
         };
 
         nav_layer {
@@ -113,7 +113,7 @@
                 &none  KM_NAV_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&none &inc_dec_kp LEFT RIGHT>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LEFT RIGHT>;
         };
 
         system_layer {
@@ -126,7 +126,7 @@
                 &none  &bootloader  &trans  &trans  &trans  &trans  &sys_reset  &none
             >;
             // Left encoder only (right slot cleared).
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
 
         functions_layer {
@@ -137,7 +137,7 @@
                 &none  KM_FUNC_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &none>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
 
         // Sweep-exclusive: cirque trackpad mouse layer
