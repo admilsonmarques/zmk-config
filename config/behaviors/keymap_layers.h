@@ -21,6 +21,11 @@
 // ─── Conditional layers removed — outer thumb keys now use &lt MEDIA / &lt SYSTEM ───
 #define KM_COND_LAYERS /* unused */
 
+// ─── Trackpad pointer speed (nxtkb cirque-input-module &ptr_spd) ─────────────
+#define SPEED_POINTER 0
+#define SPEED_PREV 0
+#define SPEED_NEXT 1
+
 // ─── Thumb clusters ─────────────────────────────────────────────────────────
 // 4 middle thumbs — shared by all keyboards
 #define KM_MID_T \
@@ -104,7 +109,7 @@
     &trans       &hm RSHFT LEFT &hm RCTRL DOWN &hm RALT UP &hm RGUI RIGHT
 
 #define KM_NAV_R2 \
-    &trans       &trans       &trans       &trans       &trans \
+    &ptr_spd SPEED_POINTER SPEED_PREV  &ptr_spd SPEED_POINTER SPEED_NEXT  &trans  &trans  &trans \
     &trans       &trans       &trans       &trans       &trans
 
 #define KM_NAV_T \

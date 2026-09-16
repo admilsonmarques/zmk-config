@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include "../../../behaviors/cirque_pointing.dtsi"
+
 #include "totem.dtsi"
 
 &default_transform {

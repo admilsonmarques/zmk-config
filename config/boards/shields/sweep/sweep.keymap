@@ -62,7 +62,9 @@
                 &none  KM_BASE_R2  &none
                 &none  &lt MEDIA C_MUTE  KM_MID_T  &lt SYSTEM C_PP  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // Only the right encoder is mounted on this build; volume on its
+            // slot (index 1). Left slot kept for future left-encoder builds.
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         numbers_layer {

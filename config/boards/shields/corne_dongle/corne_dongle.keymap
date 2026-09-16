@@ -36,6 +36,10 @@
                 &none  KM_BASE_R2  &none
                 &kp ESC  KM_THUMBS  &kp BSLH
             >;
+            // Split sensor slots: index 0 = sweep_dongle_left encoder,
+            // index 1 = sweep_right encoder. Mirrors sweep.keymap: only the
+            // right encoder is mounted, so volume sits on index 1.
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         numbers_layer {
@@ -46,6 +50,7 @@
                 &none  KM_NUMS_R2  &none
                 &trans  KM_NUMS_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
         };
 
         symbols_layer {
@@ -56,6 +61,7 @@
                 &none  KM_SYMS_R2  &none
                 &trans  KM_SYMS_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         media_layer {
@@ -66,6 +72,7 @@
                 &none  KM_MEDI_R2  &none
                 &trans  KM_MEDI_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
         nav_layer {
@@ -76,6 +83,7 @@
                 &none  KM_NAV_R2  &none
                 &trans  KM_NAV_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
         };
 
         system_layer {
@@ -86,6 +94,7 @@
                 &none  KM_SYS_R2  &none
                 &trans  KM_SYS_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
         functions_layer {
@@ -96,6 +105,7 @@
                 &none  KM_FUNC_R2  &none
                 &trans  KM_FUNC_T  &trans
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
