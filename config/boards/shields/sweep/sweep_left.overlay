@@ -15,6 +15,8 @@
 
 &glidepoint_listener {
 	status = "okay";
+	// Pointer-speed processor: scales trackpad REL_X/Y on the central.
+	input-processors = <&pointer_processor 0 0>;
 };
 
 &pinctrl {

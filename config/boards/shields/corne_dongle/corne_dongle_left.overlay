@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
+#include "../../../behaviors/cirque_pointing.dtsi"
+
 /* LED strip (SPI3, MOSI P0.06) is defined in
  * boards/nice_nano_nrf52840_zmk.overlay so it applies
  * automatically for every corne_dongle shield variant.

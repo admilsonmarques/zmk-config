@@ -1,5 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+#include "../../../behaviors/cirque_pointing.dtsi"
 
 / {
 	kscan0: kscan0 {

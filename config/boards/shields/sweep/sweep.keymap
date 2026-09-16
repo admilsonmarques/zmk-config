@@ -62,7 +62,9 @@
                 &none  KM_BASE_R2  &none
                 &none  &lt MEDIA C_MUTE  KM_MID_T  &lt SYSTEM C_PP  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // Left slot: arrows (CW = right, CCW = left) — for future builds.
+            // Right slot (mounted): PgUp (CW) / PgDn (CCW).
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp PG_UP PG_DN>;
         };
 
         numbers_layer {
@@ -74,7 +76,8 @@
                 //       ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R
                 &none  &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
+            // Right encoder only (left slot cleared).
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LC(LEFT) LC(RIGHT)>;
         };
 
         symbols_layer {
@@ -86,7 +89,8 @@
                 //       ENC-L→BSPC  NUM/TAB→DEL  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &trans  &kp BSPC  &kp DEL  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            // Left encoder only (right slot cleared).
+            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &sensor_none 0 0>;
         };
 
         media_layer {
@@ -98,7 +102,7 @@
                 //       ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &kp C_PP  &trans  &trans  &trans  &trans  &kp C_MUTE  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp C_PREV C_NEXT>;
         };
 
         nav_layer {
@@ -109,7 +113,7 @@
                 &none  KM_NAV_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&sensor_none 0 0 &inc_dec_kp LEFT RIGHT>;
         };
 
         system_layer {
@@ -121,7 +125,8 @@
                 //       ENC-L        NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &bootloader  &trans  &trans  &trans  &trans  &sys_reset  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // Left encoder only (right slot cleared).
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
 
         functions_layer {
@@ -132,7 +137,7 @@
                 &none  KM_FUNC_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &sensor_none 0 0>;
         };
 
         // Sweep-exclusive: cirque trackpad mouse layer
@@ -144,7 +149,7 @@
                 &none  &trans      &trans    &trans      &trans    &trans    &trans         &mkp MB4       &mkp MCLK    &mkp MB5        &trans      &none
                 &none  &trans      &kp SPACE &kp LSHFT   &mkp LCLK  &mkp RCLK &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp LEFT RIGHT>;
         };
     };
 };
