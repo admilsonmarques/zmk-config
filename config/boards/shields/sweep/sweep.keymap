@@ -64,7 +64,9 @@
             >;
             // Only the right encoder is mounted on this build; volume on its
             // slot (index 1). Left slot kept for future left-encoder builds.
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            // Direction: 1st param = inward (CW), 2nd = outward (CCW);
+            // outward = increase/forward on every layer.
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         numbers_layer {
@@ -76,7 +78,7 @@
                 //       ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC→DEL  ENC-R
                 &none  &trans  &trans  &kp SPACE  &kp BSPC  &kp DEL  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp LC(Y) LC(Z) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
+            sensor-bindings = <&inc_dec_kp LC(Z) LC(Y) &inc_dec_kp LC(LEFT) LC(RIGHT)>;
         };
 
         symbols_layer {
@@ -88,7 +90,8 @@
                 //       ENC-L→BSPC  NUM/TAB→DEL  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &trans  &kp BSPC  &kp DEL  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            // Brightness moved to the right (mounted) encoder slot.
+            sensor-bindings = <&inc_dec_kp C_BRI_DN C_BRI_UP &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
         media_layer {
@@ -100,7 +103,7 @@
                 //       ENC-L  NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &kp C_PP  &trans  &trans  &trans  &trans  &kp C_MUTE  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
         };
 
         nav_layer {
@@ -111,7 +114,7 @@
                 &none  KM_NAV_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT>;
         };
 
         system_layer {
@@ -123,7 +126,8 @@
                 //       ENC-L        NUM/TAB  NAV/SPC  FUN/RET  SYM/ESC  ENC-R
                 &none  &bootloader  &trans  &trans  &trans  &trans  &sys_reset  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            // One-handed arrows: hold the encoder button (SYSTEM) + rotate.
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp LEFT RIGHT>;
         };
 
         functions_layer {
@@ -134,7 +138,7 @@
                 &none  KM_FUNC_R2  &none
                 &none  &trans  &trans  &trans  &trans  &trans  &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
         // Sweep-exclusive: cirque trackpad mouse layer
@@ -146,7 +150,7 @@
                 &none  &trans      &trans    &trans      &trans    &trans    &trans         &mkp MB4       &mkp MCLK    &mkp MB5        &trans      &none
                 &none  &trans      &kp SPACE &kp LSHFT   &mkp LCLK  &mkp RCLK &trans  &none
             >;
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp RIGHT LEFT>;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp LEFT RIGHT>;
         };
     };
 };

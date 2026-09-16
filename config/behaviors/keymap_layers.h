@@ -34,7 +34,7 @@
 
 // 6-thumb cluster (Corne / Totem base layer)
 #define KM_THUMBS \
-    &lt MEDIA BSPC  KM_MID_T  &lt SYSTEM DEL
+    &lt MEDIA BSPC  KM_MID_T  &lt SYSTEM C_PP
 
 // ─── BASE ────────────────────────────────────────────────────────────────────
 #define KM_BASE_R0 \
