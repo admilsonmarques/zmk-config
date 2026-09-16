@@ -1,19 +1,19 @@
 /*
  * Empty sensor-binding slot.
  *
- * The sensor-bindings phandle-array requires every behavior to expose
- * #sensor-binding-cells, which &none does not. This wrapper reuses the
- * behavior-none driver with valid sensor cells: at runtime the lookup
- * fails ("no behavior assigned"), so the keymap falls through to the
- * next lower layer — the slot inherits the Base layer's function.
+ * The sensor-bindings phandle-array requires #sensor-binding-cells,
+ * which &none does not expose (its binding rejects it). This wrapper
+ * uses the sensor-rotate-var driver — the same as &inc_dec_kp — with
+ * both directions bound to &none: rotation is accepted and then
+ * swallowed by the none behavior, so the slot does nothing at all.
  */
 
 / {
     behaviors {
         sensor_none: sensor_none {
-            compatible = "zmk,behavior-none";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
+            bindings = <&none>, <&none>;
         };
     };
 };
